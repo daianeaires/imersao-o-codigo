@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bem-vinda à Imersão O Código®</title>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1464500801898905');
+    fbq('track', 'PageView');
+    fbq('track', 'Purchase', {value: 97.00, currency: 'BRL'});
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1464500801898905&ev=Purchase&noscript=1"/></noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.65rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .card { background: rgba(79,28,33,0.45); border: 1px solid rgba(184,134,46,0.22); border-radius: 1rem; }
+    .btn-gold {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      background-size: 200% auto;
+      transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+      color: #1a0709; font-family: 'Montserrat', sans-serif; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .btn-gold:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184,134,46,0.4);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.8s ease forwards; }
+    .fade-in-delay-1 { animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
+    .fade-in-delay-2 { animation: fadeInUp 0.8s ease 0.4s forwards; opacity: 0; }
+    .fade-in-delay-3 { animation: fadeInUp 0.8s ease 0.6s forwards; opacity: 0; }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,46,0.4); }
+      50%       { box-shadow: 0 0 0 12px rgba(184,134,46,0); }
+    }
+    .pulse { animation: pulse-gold 2.5s infinite; }
+    .step-num {
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px; flex-shrink: 0;
+      border: 1px solid rgba(184,134,46,0.5); background: #320F13;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #B8862E;
+    }
+  </style>
+</head>
+<body class="min-h-screen" style="background: #1a0709;">
+
+  <!-- Confetti / hero section -->
+  <section class="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <img src="assets/images/hero-collage.jpeg" alt="" class="w-full h-full object-cover object-top" style="filter: brightness(0.2) saturate(0.5);" />
+      <div class="absolute inset-0 bg-gradient-to-b from-vinho-deep via-vinho-deep/90 to-vinho-deep"></div>
+    </div>
+
+    <div class="relative z-10 max-w-xl mx-auto text-center">
+
+      <!-- Check icon -->
+      <div class="fade-in w-20 h-20 rounded-full border-2 border-dourado/60 flex items-center justify-center mx-auto mb-8 pulse">
+        <span class="text-dourado text-3xl">✦</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="fade-in-delay-1 font-serif text-5xl sm:text-6xl text-creme-pale leading-tight mb-6">
+        Sua vaga está<br />
+        <em class="gold-text">confirmada.</em>
+      </h1>
+
+      <p class="fade-in-delay-2 font-sans text-sm text-creme/70 leading-relaxed mb-10 max-w-md mx-auto">
+        Bem-vinda à <strong class="text-creme">Imersão O Código®</strong>. Você acabou de tomar uma das decisões mais importantes pela sua identidade, presença e autoridade de mercado.
+      </p>
+
+      <!-- Datas -->
+      <div class="fade-in-delay-3 flex flex-col sm:flex-row gap-3 justify-center mb-10">
+        <div class="card px-5 py-3 text-center">
+          <div class="font-serif text-2xl text-dourado font-light">24</div>
+          <div class="font-sans text-xs text-creme/50 mt-0.5">Março · 19h</div>
+        </div>
+        <div class="card px-5 py-3 text-center">
+          <div class="font-serif text-2xl text-dourado font-light">26</div>
+          <div class="font-sans text-xs text-creme/50 mt-0.5">Março · 19h</div>
+        </div>
+        <div class="card px-5 py-3 text-center">
+          <div class="font-serif text-2xl text-dourado font-light">31</div>
+          <div class="font-sans text-xs text-creme/50 mt-0.5">Março · 19h</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/40">
+        Salva as datas na agenda agora. Em breve você receberá os próximos passos no WhatsApp.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Próximos passos -->
+  <section class="py-20 px-6" style="background: #320F13;">
+    <div class="max-w-xl mx-auto">
+
+      <div class="ornament mb-10">O Que Acontece Agora</div>
+
+      <div class="space-y-6">
+
+        <div class="flex gap-5 items-start">
+          <div class="step-num">1</div>
+          <div class="pt-1">
+            <h3 class="font-serif text-xl text-creme-pale mb-1">Verifique seu WhatsApp</h3>
+            <p class="font-sans text-xs text-creme/60 leading-relaxed">Você vai receber uma mensagem com o link de acesso, o link do grupo exclusivo e tudo que precisa para aproveitar cada sessão.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 items-start">
+          <div class="step-num">2</div>
+          <div class="pt-1">
+            <h3 class="font-serif text-xl text-creme-pale mb-1">Entre no grupo das alunas</h3>
+            <p class="font-sans text-xs text-creme/60 leading-relaxed mb-3">Esse é o espaço onde você vai se conectar com as outras participantes, compartilhar insights e receber os materiais de cada sessão.</p>
+            <a href="https://chat.whatsapp.com/EecWqYAKAfhbgrS2xyq" class="btn-gold inline-block px-7 py-3 rounded-full text-xs">
+              ENTRAR NO GRUPO
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-5 items-start">
+          <div class="step-num">3</div>
+          <div class="pt-1">
+            <h3 class="font-serif text-xl text-creme-pale mb-1">Salve as datas na agenda</h3>
+            <p class="font-sans text-xs text-creme/60 leading-relaxed">24, 26 e 31 de março às 19h. Reserve esse tempo para você — presença ao vivo faz toda a diferença na experiência.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5 items-start">
+          <div class="step-num">4</div>
+          <div class="pt-1">
+            <h3 class="font-serif text-xl text-creme-pale mb-1">Chegue com a mente aberta</h3>
+            <p class="font-sans text-xs text-creme/60 leading-relaxed">Não precisa se preparar com leituras ou teorias. O único pré-requisito é chegar inteira — disposta a se ver de um jeito novo.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Mensagem da Jacqueline -->
+  <section class="py-20 px-6" style="background: #1a0709;">
+    <div class="max-w-xl mx-auto">
+
+      <div class="ornament mb-10">Uma Palavra da Jacqueline</div>
+
+      <div class="relative">
+        <div class="card p-8 sm:p-10">
+          <p class="font-serif text-xl sm:text-2xl text-creme-pale italic leading-relaxed mb-6">
+            "Você não está aqui por acaso. O fato de ter chegado até aqui já diz muito sobre quem você é e o nível que você quer alcançar.
+            <br /><br />
+            Nos próximos dias, vamos trabalhar juntas para que você saia com uma clareza que muda a forma como você aparece — no mercado, nas vendas, nas relações.
+            <br /><br />
+            Estou te esperando."
+          </p>
+          <div class="flex items-center gap-4">
+            <img src="assets/images/jacqueline.jpeg" alt="Jacqueline Fraga" class="w-14 h-14 rounded-full object-cover border-2 border-dourado/40" style="object-position: top;" />
+            <div>
+              <p class="font-sans text-sm text-creme font-600">Jacqueline Fraga</p>
+              <p class="font-sans text-xs text-creme/40 mt-0.5">Criadora do Método O Código</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-3 -left-3 text-dourado text-5xl font-serif opacity-30">"</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 px-6 text-center border-t border-dourado/10" style="background: #0f0507;">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded mx-auto mb-4 opacity-70" />
+    <p class="font-sans text-xs text-creme/30">© 2026 Jacqueline Fraga · Imersão O Código®</p>
+  </footer>
+
+</body>
+</html>

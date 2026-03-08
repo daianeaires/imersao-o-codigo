@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequência WhatsApp — Imersão O Código®</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.65rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .card { background: rgba(79,28,33,0.45); border: 1px solid rgba(184,134,46,0.22); border-radius: 1rem; }
+    .msg-box {
+      background: #1a0709;
+      border: 1px solid rgba(184,134,46,0.25);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: #EDE2D6;
+      position: relative;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(184,134,46,0.15); border: 1px solid rgba(184,134,46,0.4);
+      border-radius: 0.4rem; padding: 0.25rem 0.6rem;
+      font-size: 0.6rem; color: #B8862E; cursor: pointer; letter-spacing: 0.08em;
+      transition: background 0.2s; font-family: 'Montserrat', sans-serif;
+    }
+    .copy-btn:hover { background: rgba(184,134,46,0.3); }
+    .copy-btn.copied { color: #7dc97d; border-color: #7dc97d; background: rgba(125,201,125,0.1); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border-radius: 9999px; padding: 0.3rem 0.9rem;
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .badge-gold { background: rgba(184,134,46,0.12); border: 1px solid rgba(184,134,46,0.35); color: #B8862E; }
+    .badge-green { background: rgba(125,201,125,0.1); border: 1px solid rgba(125,201,125,0.3); color: #7dc97d; }
+    .badge-blue { background: rgba(100,150,220,0.1); border: 1px solid rgba(100,150,220,0.3); color: #8ab4f8; }
+    .timeline-line { border-left: 1px dashed rgba(184,134,46,0.25); margin-left: 1.1rem; padding-left: 1.5rem; }
+    .tip-box {
+      background: rgba(184,134,46,0.08); border-left: 3px solid #B8862E;
+      border-radius: 0 0.5rem 0.5rem 0; padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+    }
+    .step-dot {
+      width: 2.2rem; height: 2.2rem; border-radius: 9999px; flex-shrink: 0;
+      border: 1px solid rgba(184,134,46,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #B8862E;
+      background: #320F13;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="py-10 px-6 text-center border-b border-dourado/15" style="background: #1a0709;">
+    <div class="max-w-xl mx-auto">
+      <div class="badge badge-gold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-dourado"></span>
+        Uso interno — equipe O Código
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-3">
+        Sequência de WhatsApp<br />
+        <em class="gold-text">Pós-Compra Automática</em>
+      </h1>
+      <p class="font-sans text-sm text-creme/60 leading-relaxed mt-4 max-w-md mx-auto">
+        Roteiro completo de mensagens para configurar no <strong class="text-creme">Manychat</strong>. Do momento da compra até o encerramento da imersão.
+      </p>
+    </div>
+  </header>
+
+  <!-- Como configurar no Manychat -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="card p-6">
+      <h2 class="font-serif text-xl text-creme-pale mb-4">Como configurar no Manychat</h2>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start">
+          <div class="step-dot">1</div>
+          <p class="font-sans text-xs text-creme/70 leading-relaxed pt-1">Crie uma conta gratuita em <strong class="text-creme">manychat.com</strong> e conecte seu WhatsApp Business.</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-dot">2</div>
+          <p class="font-sans text-xs text-creme/70 leading-relaxed pt-1">Em <strong class="text-creme">Automations → Flows</strong>, crie um novo fluxo chamado "Pós-Compra O Código".</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-dot">3</div>
+          <p class="font-sans text-xs text-creme/70 leading-relaxed pt-1">Em <strong class="text-creme">Settings → Integrations → Hotmart</strong>, conecte sua conta Hotmart como gatilho de entrada do fluxo.</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-dot">4</div>
+          <p class="font-sans text-xs text-creme/70 leading-relaxed pt-1">Adicione cada mensagem abaixo como um <strong class="text-creme">step de mensagem</strong>, com o delay indicado em cada card.</p>
+        </div>
+      </div>
+      <div class="tip-box mt-5">
+        ✦ <strong>Variável do nome:</strong> No Manychat use <strong>&#123;&#123;first name&#125;&#125;</strong> onde aparece <strong>[nome]</strong> nas mensagens abaixo — ela preenche o nome da aluna automaticamente.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FASE 1: PÓS-COMPRA ═══ -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Fase 1 — Pós-Compra</div>
+
+    <!-- MSG 1 -->
+    <div class="flex gap-4 mb-2">
+      <div class="step-dot">1</div>
+      <div class="flex-1">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="badge badge-green">Imediato após a compra</span>
+          <span class="badge badge-gold">Boas-vindas</span>
+        </div>
+        <div class="msg-box">
+          <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+Olá, [nome]! 🌹
+
+Seja muito bem-vinda à *Imersão O Código®*.
+
+Sua compra foi confirmada e você já faz parte desse movimento.
+
+Nos próximos dias vou te enviar tudo que você precisa para aproveitar cada sessão ao máximo.
+
+Mas antes de qualquer coisa — respira. Você tomou uma decisão importante por si mesma. Isso já é o Código em ação. ✨
+
+— Jacqueline Fraga</div>
+      </div>
+    </div>
+    <div class="timeline-line mb-2">
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda 1 hora</p>
+    </div>
+
+    <!-- MSG 2 -->
+    <div class="flex gap-4 mb-2">
+      <div class="step-dot">2</div>
+      <div class="flex-1">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="badge badge-green">1 hora após a compra</span>
+          <span class="badge badge-gold">Acesso e próximos passos</span>
+        </div>
+        <div class="msg-box">
+          <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], aqui estão todas as informações para você se preparar 📋
+
+*Datas das sessões ao vivo:*
+📅 24 de março (segunda) — 19h
+📅 26 de março (quarta) — 19h
+📅 31 de março (segunda) — 19h
+
+*Link de acesso:* [inserir link da plataforma/Zoom]
+
+*Grupo exclusivo das alunas:* [inserir link do grupo]
+
+Salva essas datas na agenda agora. Te vejo lá! 🖤</div>
+      </div>
+    </div>
+    <div class="timeline-line mb-2">
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda até D-2 antes da Sessão 1 (22 de março)</p>
+    </div>
+
+    <!-- MSG 3 -->
+    <div class="flex gap-4 mb-2">
+      <div class="step-dot">3</div>
+      <div class="flex-1">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="badge badge-blue">22 de março — manhã</span>
+          <span class="badge badge-gold">Aquecimento</span>
+        </div>
+        <div class="msg-box">
+          <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], nossa primeira sessão é em 2 dias. 🔥
+
+Antes de nos encontrarmos, quero te fazer uma pergunta para você já ir chegando com esse pensamento:
+
+*"Se a sua identidade já estivesse completamente ativada — quem você seria? Como você estaria aparecendo no mercado?"*
+
+Não precisa responder agora. Só deixa essa pergunta trabalhar em você.
+
+Nos vemos segunda às 19h. ✨</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FASE 2: SESSÃO 1 ═══ -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Fase 2 — Sessão 1 · 24 de Março</div>
+
+    <div class="timeline-line">
+
+      <!-- MSG 4 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">4</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">24 de março — 10h</span>
+            <span class="badge badge-gold">Lembrete do dia</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], hoje é o dia. 🌹
+
+*Sessão 1 — Decodificando Sua Identidade*
+🕖 Hoje às 19h
+🔗 [link de acesso]
+
+Separa um caderno, um copo d'água e chega com a mente aberta. O que vai acontecer hoje não é uma aula — é uma ativação.
+
+Te esperamos! ✨</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda 2 horas após o fim da sessão</p>
+
+      <!-- MSG 5 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">5</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">24 de março — 22h</span>
+            <span class="badge badge-gold">Pós-sessão + prompts</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], como você está se sentindo? 🖤
+
+Espero que a sessão de hoje tenha tocado em algo real em você.
+
+Para aprofundar o que vivemos, preparei prompts especiais para você usar no ChatGPT ou Claude entre hoje e quarta-feira:
+
+👉 [link: imersao-o-codigo.netlify.app/prompts-alunas.html]
+
+Eles vão te ajudar a decodificar ainda mais sua identidade antes da nossa próxima sessão.
+
+Qualquer insight que surgir, compartilha no grupo. 💬</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FASE 3: SESSÃO 2 ═══ -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Fase 3 — Sessão 2 · 26 de Março</div>
+
+    <div class="timeline-line">
+
+      <!-- MSG 6 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">6</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">25 de março — tarde</span>
+            <span class="badge badge-gold">Lembrete D-1</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], amanhã é dia de sessão! 📅
+
+*Sessão 2 — Estruturando Sua Presença*
+🕖 Amanhã, quarta-feira, às 19h
+🔗 [link de acesso]
+
+Se você ainda não usou os prompts de IA, esse é o momento perfeito — eles vão te preparar para a sessão de amanhã:
+👉 [link dos prompts]
+
+Até lá! ✨</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda até o dia da sessão</p>
+
+      <!-- MSG 7 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">7</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">26 de março — 10h</span>
+            <span class="badge badge-gold">Lembrete do dia</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], hoje estruturamos sua presença. 🌹
+
+*Sessão 2 — ao vivo às 19h*
+🔗 [link de acesso]
+
+Traz com você tudo que emergiu desde segunda-feira. Hoje vamos transformar identidade em presença real de mercado.
+
+Te vemos logo mais! ✨</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda 2 horas após o fim da sessão</p>
+
+      <!-- MSG 8 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">8</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">26 de março — 22h</span>
+            <span class="badge badge-gold">Pós-sessão</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], duas sessões. Já sente a diferença? 🖤
+
+Nossa última sessão é na próxima segunda, dia 31. Use esses dias para praticar o que aprendemos — aplica no seu conteúdo, na sua comunicação, nas suas conversas de venda.
+
+Os prompts da Sessão 2 estão te esperando:
+👉 [link dos prompts]
+
+A transformação acontece no intervalo, não só na aula. 💫</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FASE 4: SESSÃO 3 ═══ -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Fase 4 — Sessão 3 · 31 de Março</div>
+
+    <div class="timeline-line">
+
+      <!-- MSG 9 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">9</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">30 de março — tarde</span>
+            <span class="badge badge-gold">Lembrete D-1</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], amanhã é nossa última sessão juntas. 🌹
+
+*Sessão 3 — Ativando Sua Decisão*
+🕖 Amanhã, segunda-feira, às 19h
+🔗 [link de acesso]
+
+Chegue pronta para integrar tudo — identidade, presença e a decisão que vai mudar o nível do seu mercado.
+
+Te vejo lá. ✨</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda até o dia da sessão</p>
+
+      <!-- MSG 10 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">10</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">31 de março — 10h</span>
+            <span class="badge badge-gold">Lembrete do dia</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], hoje é o dia da decisão. 🔥
+
+*Sessão 3 — ao vivo às 19h*
+🔗 [link de acesso]
+
+Depois de hoje, você não vai mais olhar para seu negócio da mesma forma. Chegue inteira.
+
+Te esperamos! ✨</div>
+        </div>
+      </div>
+
+      <p class="font-sans text-xs text-creme/30 py-2">⏱ Aguarda 2 horas após o fim da sessão</p>
+
+      <!-- MSG 11 -->
+      <div class="flex gap-4 mb-2 -ml-6">
+        <div class="step-dot">11</div>
+        <div class="flex-1">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="badge badge-blue">31 de março — 22h</span>
+            <span class="badge badge-gold">Encerramento</span>
+          </div>
+          <div class="msg-box">
+            <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], você chegou até aqui. 🖤
+
+Três sessões. Identidade decodificada. Presença estruturada. Decisão ativada.
+
+O Código agora é seu — e o mercado vai sentir.
+
+Seu próximo passo está aqui:
+👉 [link dos prompts — Sessão 3]
+
+Foi uma honra estar com você nessa imersão. Guarda o que sentiu hoje — é daqui que tudo começa.
+
+Com carinho,
+*Jacqueline Fraga* 🌹</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FASE 5: PÓS-IMERSÃO (UPSELL) ═══ -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Fase 5 — Pós-Imersão · 3 dias depois</div>
+
+    <!-- MSG 12 -->
+    <div class="flex gap-4 mb-6">
+      <div class="step-dot">12</div>
+      <div class="flex-1">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="badge badge-blue">3 de abril — manhã</span>
+          <span class="badge badge-gold">Follow-up + próximo passo</span>
+        </div>
+        <div class="msg-box">
+          <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], como você está depois da imersão? 🌹
+
+Queria saber o que mudou pra você — no seu olhar, na sua postura, na forma como você está se apresentando.
+
+Muitas alunas chegam nesse momento com uma clareza nova e a pergunta: *"e agora, qual é o próximo passo?"*
+
+Se você sentiu que quer ir mais fundo — trabalhar sua identidade e posicionamento de forma acompanhada, com mentoria individualizada — vou adorar conversar com você sobre isso.
+
+Me responde aqui com um *"quero saber mais"* e eu te conto como funciona. 🖤</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      ✦ <strong>Dica:</strong> Quem responder "quero saber mais" entra num fluxo separado de apresentação da mentoria. Configure isso como um novo fluxo no Manychat com gatilho na palavra-chave "quero saber mais".
+    </div>
+  </section>
+
+  <!-- Resumo visual -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Resumo da Sequência</div>
+    <div class="card p-6">
+      <div class="space-y-3">
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 1 — Boas-vindas</span>
+          <span class="badge badge-green">Imediato</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 2 — Acesso e datas</span>
+          <span class="badge badge-blue">1h após compra</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 3 — Aquecimento</span>
+          <span class="badge badge-blue">22 de março</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 4 — Lembrete Sessão 1</span>
+          <span class="badge badge-blue">24/03 — 10h</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 5 — Pós-Sessão 1 + prompts</span>
+          <span class="badge badge-blue">24/03 — 22h</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 6 — Lembrete D-1 Sessão 2</span>
+          <span class="badge badge-blue">25 de março</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 7 — Lembrete Sessão 2</span>
+          <span class="badge badge-blue">26/03 — 10h</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 8 — Pós-Sessão 2</span>
+          <span class="badge badge-blue">26/03 — 22h</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 9 — Lembrete D-1 Sessão 3</span>
+          <span class="badge badge-blue">30 de março</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 10 — Lembrete Sessão 3</span>
+          <span class="badge badge-blue">31/03 — 10h</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <span class="font-sans text-xs text-creme/60">MSG 11 — Encerramento</span>
+          <span class="badge badge-blue">31/03 — 22h</span>
+        </div>
+        <div class="flex justify-between items-center py-2">
+          <span class="font-sans text-xs text-creme/60">MSG 12 — Follow-up + próximo passo</span>
+          <span class="badge badge-blue">3 de abril</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 text-center border-t border-dourado/10 mt-6" style="background: #0f0507;">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded mx-auto mb-4 opacity-70" />
+    <p class="font-sans text-xs text-creme/30">© 2026 Jacqueline Fraga · Imersão O Código®</p>
+    <p class="font-sans text-xs text-creme/20 mt-1">Documento interno — equipe O Código.</p>
+  </footer>
+
+  <script>
+    function copyMsg(btn) {
+      const box = btn.parentElement;
+      const text = box.innerText.replace('Copiar', '').replace('Copiado!', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

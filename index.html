@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imersão O Código® — Ative Sua Identidade. Transforme Sua Presença.</title>
+  <meta name="description" content="A imersão ao vivo que decodifica o que está bloqueando sua visibilidade, sua autoridade e suas vendas. 3 encontros online. R$97." />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1464500801898905');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1464500801898905&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: {
+              deep:    '#320F13',
+              dark:    '#4F1C21',
+              DEFAULT: '#732231',
+              light:   '#9B3647',
+            },
+            creme: {
+              DEFAULT: '#D9C3B0',
+              light:   '#EDE2D6',
+              pale:    '#F7F1EB',
+            },
+            terra:   '#735848',
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans:  ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+
+    /* Ornamental divider */
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.7rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+
+    /* Gold gradient text */
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d 0%, #B8862E 40%, #e8c06a 70%, #B8862E 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Section base */
+    .section-dark  { background-color: #320F13; }
+    .section-darker { background-color: #1a0709; }
+    .section-mid   { background-color: #4F1C21; }
+
+    /* CTA Button */
+    .btn-gold {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      background-size: 200% auto;
+      transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+      color: #1a0709; font-family: 'Montserrat', sans-serif; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .btn-gold:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184,134,46,0.5);
+    }
+
+    /* Subtle border card */
+    .card-vinho {
+      border: 1px solid rgba(184,134,46,0.25);
+      background: rgba(79,28,33,0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Image overlay */
+    .img-vinheta { filter: brightness(0.75) contrast(1.05) saturate(0.9); }
+
+    /* Countdown */
+    #countdown span { font-family: 'Cormorant Garamond', serif; }
+
+    /* Pulse badge */
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,46,0.4); }
+      50%       { box-shadow: 0 0 0 10px rgba(184,134,46,0); }
+    }
+    .pulse-badge { animation: pulse-gold 2s infinite; }
+
+    /* Scroll reveal placeholder */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     STICKY NAV BAR
+═══════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 bg-vinho-deep/95 backdrop-blur border-b border-dourado/20 py-3 px-6">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-10 w-auto rounded" />
+    <a href="#oferta" class="btn-gold text-xs sm:text-sm px-5 py-2.5 rounded-full hidden sm:inline-block">
+      QUERO MINHA VAGA — R$97
+    </a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden section-darker">
+
+  <!-- Background image with overlay -->
+  <div class="absolute inset-0">
+    <img src="assets/images/hero-collage.jpeg" alt="" class="w-full h-full object-cover object-top img-vinheta" />
+    <div class="absolute inset-0 bg-gradient-to-r from-vinho-deep via-vinho-deep/85 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-vinho-deep via-transparent to-vinho-deep/60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 lg:py-32">
+    <div class="max-w-2xl">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-vinho-dark/70 border border-dourado/40 rounded-full px-4 py-1.5 mb-8 pulse-badge">
+        <span class="w-2 h-2 rounded-full bg-dourado animate-pulse"></span>
+        <span class="text-dourado text-xs font-sans font-600 tracking-widest uppercase">Imersão Ao Vivo · Online · Março 2026</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-light leading-tight text-creme-pale mb-6">
+        Você não tem um<br />
+        problema de<br />
+        <em class="gold-text font-medium">estratégia.</em>
+      </h1>
+
+      <p class="font-serif text-2xl sm:text-3xl text-creme/80 italic mb-8 leading-relaxed">
+        Você tem um problema de identidade.
+      </p>
+
+      <!-- Sub copy -->
+      <p class="font-sans text-base text-creme/70 leading-relaxed mb-10 max-w-lg">
+        A imersão ao vivo que decodifica o que está bloqueando sua visibilidade, sua autoridade e suas vendas — e ativa o código que faz seu mercado te ver como a única escolha.
+      </p>
+
+      <!-- Promise pills -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <span class="border border-dourado/40 text-creme text-xs font-sans px-4 py-1.5 rounded-full">Identidade Integrada</span>
+        <span class="border border-dourado/40 text-creme text-xs font-sans px-4 py-1.5 rounded-full">Posicionamento Estruturado</span>
+        <span class="border border-dourado/40 text-creme text-xs font-sans px-4 py-1.5 rounded-full">Presença Inegociável</span>
+      </div>
+
+      <!-- CTA -->
+      <a href="#oferta" class="btn-gold inline-block px-10 py-4 rounded-full text-sm mb-6">
+        QUERO ATIVAR MEU CÓDIGO
+      </a>
+
+      <!-- Social proof line -->
+      <p class="font-sans text-xs text-creme/50 tracking-wide">
+        ✦ 3 encontros ao vivo · 24, 26 e 31 de março às 19h · Garantia de 7 dias
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Scroll arrow -->
+  <a href="#problema" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-dourado/60 animate-bounce z-10">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </a>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     O MERCADO MUDOU — PROBLEMA
+═══════════════════════════════════════════════════ -->
+<section id="problema" class="section-dark py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="ornament mb-16">O Cenário Atual</div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <h2 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-8">
+          O mercado ensina arquétipo<br />
+          como <em class="text-dourado">estética.</em><br />
+          <span class="text-creme/60">O Código ativa arquétipo</span><br />
+          como <em class="text-creme-pale">decisão.</em>
+        </h2>
+
+        <p class="font-sans text-sm text-creme/70 leading-relaxed mb-6">
+          Você já fez cursos de posicionamento. Já refinou sua bio. Já mudou sua paleta de cores. Já contratou copywriter. E ainda assim sente que algo <strong class="text-creme">não está funcionando</strong> — que sua presença não converte com a intensidade que deveria.
+        </p>
+        <p class="font-sans text-sm text-creme/70 leading-relaxed">
+          O problema não é o que você está comunicando. É o <strong class="text-creme">quem você está sendo</strong> no momento em que comunica.
+        </p>
+      </div>
+
+      <div class="relative">
+        <img src="assets/images/split-face.jpeg" alt="A dualidade da identidade" class="w-full rounded-2xl img-vinheta object-cover h-[480px]" />
+        <div class="absolute inset-0 rounded-2xl border border-dourado/20"></div>
+      </div>
+    </div>
+
+    <!-- 3 pain points -->
+    <div class="grid md:grid-cols-3 gap-6 mt-20">
+      <div class="card-vinho rounded-2xl p-8">
+        <div class="text-dourado text-3xl font-serif mb-4">01</div>
+        <h3 class="font-serif text-xl text-creme-pale mb-3">Presença sem peso</h3>
+        <p class="font-sans text-sm text-creme/60 leading-relaxed">Você aparece, mas não fica na memória. As pessoas admiram, mas não compram — porque ainda não sentiram a força da sua autoridade.</p>
+      </div>
+      <div class="card-vinho rounded-2xl p-8">
+        <div class="text-dourado text-3xl font-serif mb-4">02</div>
+        <h3 class="font-serif text-xl text-creme-pale mb-3">Posicionamento sem raiz</h3>
+        <p class="font-sans text-sm text-creme/60 leading-relaxed">Você sabe o que vende, mas não sabe quem você é quando vende. Esse vazio gera insegurança, inconsistência e preços que você mesmo não acredita.</p>
+      </div>
+      <div class="card-vinho rounded-2xl p-8">
+        <div class="text-dourado text-3xl font-serif mb-4">03</div>
+        <h3 class="font-serif text-xl text-creme-pale mb-3">Visibilidade sem conversão</h3>
+        <p class="font-sans text-sm text-creme/60 leading-relaxed">Seus seguidores crescem, seus stories alcançam — mas as vendas não acompanham. Porque alcance sem identidade não converte.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     AGITAÇÃO — A IMAGEM DRAMÁTICA
+═══════════════════════════════════════════════════ -->
+<section class="relative py-32 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="assets/images/abstract-smoke.jpeg" alt="" class="w-full h-full object-cover" style="filter: brightness(0.3) saturate(0.6);" />
+    <div class="absolute inset-0 bg-vinho-deep/70"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+    <p class="font-serif text-3xl sm:text-4xl lg:text-5xl text-creme-pale leading-relaxed italic">
+      "Você não está com dificuldade de vender.<br />
+      Você está com dificuldade de <span class="gold-text">ser vista como quem você é</span> — no tamanho que você já é."
+    </p>
+    <p class="font-sans text-sm text-dourado mt-8 tracking-widest uppercase">— Jacqueline Fraga</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     O MÉTODO — TRIÂNGULO DO CÓDIGO
+═══════════════════════════════════════════════════ -->
+<section id="metodo" class="section-mid py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="ornament mb-6">O Método</div>
+    <div class="text-center mb-16">
+      <h2 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-6">
+        O Triângulo do Código
+      </h2>
+      <p class="font-sans text-sm text-creme/70 max-w-xl mx-auto leading-relaxed">
+        Um framework de ativação de identidade desenvolvido por Jacqueline Fraga ao longo de 15 anos acompanhando líderes, mentoras e empreendedoras de alto nível.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Triangle visual -->
+      <div class="relative flex items-center justify-center min-h-[400px]">
+        <svg viewBox="0 0 400 360" class="w-full max-w-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Triangle -->
+          <polygon points="200,20 380,340 20,340" stroke="#B8862E" stroke-width="1.5" fill="rgba(184,134,46,0.05)" />
+          <!-- Inner lines -->
+          <line x1="200" y1="20" x2="200" y2="340" stroke="#B8862E" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.4"/>
+          <line x1="200" y1="180" x2="380" y2="340" stroke="#B8862E" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.4"/>
+          <line x1="200" y1="180" x2="20" y2="340" stroke="#B8862E" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.4"/>
+          <!-- Nodes -->
+          <circle cx="200" cy="20" r="8" fill="#B8862E" />
+          <circle cx="20"  cy="340" r="8" fill="#B8862E" />
+          <circle cx="380" cy="340" r="8" fill="#B8862E" />
+          <circle cx="200" cy="180" r="20" fill="#732231" stroke="#B8862E" stroke-width="1.5"/>
+          <!-- Center text -->
+          <text x="200" y="186" text-anchor="middle" fill="#D9C3B0" font-size="9" font-family="Montserrat">CÓDIGO</text>
+          <!-- Labels -->
+          <text x="200" y="8"  text-anchor="middle" fill="#e8c06a" font-size="13" font-family="Cormorant Garamond" font-style="italic">Identidade</text>
+          <text x="14"  y="360" text-anchor="middle" fill="#e8c06a" font-size="13" font-family="Cormorant Garamond" font-style="italic">Presença</text>
+          <text x="390" y="360" text-anchor="middle" fill="#e8c06a" font-size="13" font-family="Cormorant Garamond" font-style="italic">Decisão</text>
+        </svg>
+      </div>
+
+      <!-- Steps -->
+      <div class="space-y-8">
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-dourado/60 flex items-center justify-center">
+            <span class="gold-text font-serif text-xl font-medium">I</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-creme-pale mb-2">Identidade</h3>
+            <p class="font-sans text-sm text-creme/60 leading-relaxed">Mapeamos seu arquétipo não como estética, mas como estrutura de decisão. Quem você é define como você vende — e o que o mercado sente ao entrar em contato com você.</p>
+          </div>
+        </div>
+        <div class="border-l border-dourado/20 ml-6 pl-0 h-8"></div>
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-dourado/60 flex items-center justify-center">
+            <span class="gold-text font-serif text-xl font-medium">P</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-creme-pale mb-2">Presença</h3>
+            <p class="font-sans text-sm text-creme/60 leading-relaxed">Estruturamos como sua identidade se manifesta em cada ponto de contato — redes sociais, vendas, liderança, relacionamentos. Presença não é performance. É coerência.</p>
+          </div>
+        </div>
+        <div class="border-l border-dourado/20 ml-6 pl-0 h-8"></div>
+        <div class="flex gap-6 items-start">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full border border-dourado/60 flex items-center justify-center">
+            <span class="gold-text font-serif text-xl font-medium">D</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl text-creme-pale mb-2">Decisão</h3>
+            <p class="font-sans text-sm text-creme/60 leading-relaxed">Ativamos o campo de autoridade que faz o mercado se decidir por você — não porque você convenceu, mas porque sua presença tornou óbvio que você é a escolha certa.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     O QUE VOCÊ VAI RECEBER
+═══════════════════════════════════════════════════ -->
+<section id="conteudo" class="section-dark py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="ornament mb-6">O Que Está Incluído</div>
+    <div class="text-center mb-16">
+      <h2 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-4">
+        3 Encontros Ao Vivo.<br />
+        <em class="gold-text">Uma Transformação Completa.</em>
+      </h2>
+    </div>
+
+    <!-- Sessions -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="card-vinho rounded-2xl p-8 text-center">
+        <div class="text-dourado font-serif text-5xl font-light mb-2">01</div>
+        <div class="text-creme/50 font-sans text-xs tracking-widest uppercase mb-4">24 de Março · 19h</div>
+        <h3 class="font-serif text-2xl text-creme-pale mb-4">Decodificando<br />Sua Identidade</h3>
+        <p class="font-sans text-xs text-creme/60 leading-relaxed">Descubra seu arquétipo de poder — não como rótulo, mas como força operante que governa suas decisões, sua comunicação e sua liderança.</p>
+      </div>
+      <div class="card-vinho rounded-2xl p-8 text-center border-dourado/50">
+        <div class="text-dourado font-serif text-5xl font-light mb-2">02</div>
+        <div class="text-creme/50 font-sans text-xs tracking-widest uppercase mb-4">26 de Março · 19h</div>
+        <h3 class="font-serif text-2xl text-creme-pale mb-4">Estruturando<br />Sua Presença</h3>
+        <p class="font-sans text-xs text-creme/60 leading-relaxed">Construa o posicionamento que emerge da sua essência — não de tendência de mercado. Aprenda a aparecer com coerência e impacto em todos os pontos de contato.</p>
+      </div>
+      <div class="card-vinho rounded-2xl p-8 text-center">
+        <div class="text-dourado font-serif text-5xl font-light mb-2">03</div>
+        <div class="text-creme/50 font-sans text-xs tracking-widest uppercase mb-4">31 de Março · 19h</div>
+        <h3 class="font-serif text-2xl text-creme-pale mb-4">Ativando<br />Sua Decisão</h3>
+        <p class="font-sans text-xs text-creme/60 leading-relaxed">Integre identidade e presença em ação real — metas, autoridade de mercado e o campo de atração que faz clientes escolherem você antes de qualquer concorrente.</p>
+      </div>
+    </div>
+
+    <!-- Devices mockup + bonus -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="relative">
+        <img src="assets/images/devices-mockup.jpeg" alt="Imersão O Código — acesso em todos os dispositivos" class="w-full rounded-2xl img-vinheta" />
+        <div class="absolute inset-0 rounded-2xl border border-dourado/20"></div>
+      </div>
+      <div>
+        <h3 class="font-serif text-3xl text-creme-pale mb-6">Tudo que está incluído:</h3>
+        <ul class="space-y-4">
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado mt-1">✦</span>
+            <div>
+              <strong class="font-sans text-sm text-creme font-600">3 Aulas ao vivo com Jacqueline Fraga</strong>
+              <p class="font-sans text-xs text-creme/60 mt-1">Imersão completa com conteúdo inédito, transmitida online.</p>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado mt-1">✦</span>
+            <div>
+              <strong class="font-sans text-sm text-creme font-600">Gravações das sessões</strong>
+              <p class="font-sans text-xs text-creme/60 mt-1">Acesso às gravações para rever quando precisar.</p>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado mt-1">✦</span>
+            <div>
+              <strong class="font-sans text-sm text-creme font-600">Material de apoio exclusivo</strong>
+              <p class="font-sans text-xs text-creme/60 mt-1">Workbooks e guias para implementação imediata.</p>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado mt-1">✦</span>
+            <div>
+              <strong class="font-sans text-sm text-creme font-600">Comunidade privada de participantes</strong>
+              <p class="font-sans text-xs text-creme/60 mt-1">Rede de líderes e empreendedoras em transformação.</p>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado mt-1">✦</span>
+            <div>
+              <strong class="font-sans text-sm text-creme font-600">Garantia total de 7 dias</strong>
+              <p class="font-sans text-xs text-creme/60 mt-1">Se não for para você, devolvemos 100% do investimento.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     PARA QUEM É
+═══════════════════════════════════════════════════ -->
+<section class="section-mid py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="ornament mb-16">Compatibilidade</div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+
+      <!-- Para quem É -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-8 h-8 rounded-full bg-dourado/20 border border-dourado/50 flex items-center justify-center">
+            <span class="text-dourado text-sm">✓</span>
+          </div>
+          <h3 class="font-serif text-2xl text-creme-pale">Esta imersão é para você se…</h3>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado/80 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/80 leading-relaxed">Você é uma líder, mentora ou empreendedora que sente que sua presença ainda não reflete o tamanho do seu trabalho</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado/80 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/80 leading-relaxed">Você já tem resultado e expertise, mas ainda cobra preços que não correspondem ao valor que entrega</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado/80 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/80 leading-relaxed">Você quer parar de ajustar estratégia e finalmente entender o que está bloqueando sua visibilidade e conversão</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado/80 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/80 leading-relaxed">Você está pronta para ser reconhecida como autoridade — não por performance, mas por quem você genuinamente é</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-dourado/80 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/80 leading-relaxed">Você quer construir um posicionamento com raiz, que não depende de trend ou tendência</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Para quem NÃO é -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-8 h-8 rounded-full bg-vinho/20 border border-vinho-light/30 flex items-center justify-center">
+            <span class="text-vinho-light text-sm">✕</span>
+          </div>
+          <h3 class="font-serif text-2xl text-creme/60">Esta imersão não é para você se…</h3>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex gap-3 items-start">
+            <span class="text-creme/30 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/50 leading-relaxed">Você está buscando mais uma técnica de marketing ou um script de vendas pronto</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-creme/30 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/50 leading-relaxed">Você quer uma solução rápida sem compromisso de se aprofundar em si mesma</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-creme/30 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/50 leading-relaxed">Você não tem negócio ativo ou não oferece nenhum serviço ou produto ainda</p>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-creme/30 text-lg mt-0.5">•</span>
+            <p class="font-sans text-sm text-creme/50 leading-relaxed">Você não está disposta a questionar as crenças que te mantêm onde você está</p>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SOBRE JACQUELINE FRAGA
+═══════════════════════════════════════════════════ -->
+<section id="sobre" class="section-darker py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="ornament mb-16">A Criadora</div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="relative order-2 lg:order-1">
+        <img src="assets/images/jacqueline.jpeg" alt="Jacqueline Fraga" class="w-full rounded-2xl img-vinheta object-cover" style="max-height: 560px; object-position: top;" />
+        <div class="absolute inset-0 rounded-2xl border border-dourado/25"></div>
+        <!-- floating detail -->
+        <div class="absolute bottom-6 left-6 right-6 bg-vinho-deep/90 backdrop-blur rounded-xl px-5 py-4 border border-dourado/20">
+          <p class="font-serif text-sm italic text-creme/70">"A identidade não é o que você mostra. É o que você não consegue esconder."</p>
+          <p class="font-sans text-xs text-dourado mt-2">— Jacqueline Fraga</p>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <h2 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-6">
+          Jacqueline<br />Fraga
+        </h2>
+
+        <p class="font-sans text-sm text-creme/70 leading-relaxed mb-5">
+          Há mais de 15 anos, Jacqueline Fraga acompanha líderes, mentoras e empreendedoras na jornada de integrar identidade e presença — transformando profissionais competentes em marcas inegociáveis.
+        </p>
+        <p class="font-sans text-sm text-creme/70 leading-relaxed mb-5">
+          Criadora do método Triângulo do Código, ela desenvolveu uma forma única de ativar arquétipos não como estética visual, mas como estrutura de decisão — o que faz seus clientes naturalmente se tornarem a escolha óbvia do mercado.
+        </p>
+        <p class="font-sans text-sm text-creme/70 leading-relaxed mb-8">
+          Suas alunas e clientes relatam não apenas crescimento em vendas e visibilidade — mas uma clareza de identidade que transforma a forma como se relacionam consigo mesmas e com o mercado.
+        </p>
+
+        <!-- Credentials -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="card-vinho rounded-xl p-4 text-center">
+            <div class="font-serif text-3xl text-dourado font-light">15+</div>
+            <div class="font-sans text-xs text-creme/50 mt-1">Anos de experiência</div>
+          </div>
+          <div class="card-vinho rounded-xl p-4 text-center">
+            <div class="font-serif text-3xl text-dourado font-light">1k+</div>
+            <div class="font-sans text-xs text-creme/50 mt-1">Líderes transformadas</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     OFERTA / PREÇO
+═══════════════════════════════════════════════════ -->
+<section id="oferta" class="section-dark py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="ornament mb-16">Seu Investimento</div>
+
+    <!-- Price card -->
+    <div class="relative rounded-3xl overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-vinho-dark to-vinho-deep"></div>
+      <div class="absolute inset-0 border border-dourado/40 rounded-3xl"></div>
+
+      <!-- Top accent -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-dourado to-transparent"></div>
+
+      <div class="relative z-10 p-10 sm:p-14 text-center">
+
+        <div class="inline-block bg-vinho/60 border border-dourado/30 rounded-full px-5 py-1.5 mb-8">
+          <span class="font-sans text-xs text-dourado tracking-widest uppercase">Acesso completo · 3 encontros ao vivo</span>
+        </div>
+
+        <h2 class="font-serif text-4xl text-creme-pale mb-2">Imersão O Código®</h2>
+        <p class="font-sans text-sm text-creme/50 mb-10">24, 26 e 31 de março de 2026 às 19h</p>
+
+        <!-- Price -->
+        <div class="mb-10">
+          <div class="font-sans text-sm text-creme/40 line-through mb-2">De R$297,00</div>
+          <div class="flex items-end justify-center gap-2">
+            <span class="font-sans text-creme/60 text-2xl">R$</span>
+            <span class="font-serif text-8xl gold-text font-light leading-none">97</span>
+          </div>
+          <div class="font-sans text-sm text-creme/50 mt-2">à vista · ou em até 12x no cartão</div>
+        </div>
+
+        <!-- What's included -->
+        <ul class="text-left space-y-3 mb-10 max-w-sm mx-auto">
+          <li class="flex gap-3 items-center">
+            <span class="text-dourado">✦</span>
+            <span class="font-sans text-sm text-creme/80">3 encontros ao vivo (24, 26, 31/03)</span>
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="text-dourado">✦</span>
+            <span class="font-sans text-sm text-creme/80">Gravações completas das sessões</span>
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="text-dourado">✦</span>
+            <span class="font-sans text-sm text-creme/80">Materiais e workbooks exclusivos</span>
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="text-dourado">✦</span>
+            <span class="font-sans text-sm text-creme/80">Acesso à comunidade privada</span>
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="text-dourado">✦</span>
+            <span class="font-sans text-sm text-creme/80">Garantia de 7 dias completa</span>
+          </li>
+        </ul>
+
+        <!-- CTA button -->
+        <a href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-o-codigo-2pvtk/K99291801N" class="btn-gold inline-block w-full max-w-sm py-5 rounded-full text-sm mb-6">
+          QUERO ATIVAR MEU CÓDIGO AGORA
+        </a>
+
+        <!-- Urgency note -->
+        <p class="font-sans text-xs text-creme/40">
+          ⚠ Vagas limitadas. O acesso encerra quando as vagas se esgotarem.
+        </p>
+
+        <!-- Guarantee badge -->
+        <div class="flex items-center justify-center gap-4 mt-10 pt-8 border-t border-dourado/20">
+          <div class="w-14 h-14 rounded-full border-2 border-dourado/40 flex items-center justify-center flex-shrink-0">
+            <span class="text-dourado text-xl">7</span>
+          </div>
+          <div class="text-left">
+            <div class="font-sans text-sm text-creme font-600">Garantia incondicional de 7 dias</div>
+            <div class="font-sans text-xs text-creme/50 mt-0.5">Se não for para você, pediu — devolvemos. Sem perguntas.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     DEPOIMENTOS
+═══════════════════════════════════════════════════ -->
+<style>
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 1.25rem;
+  }
+  @keyframes marquee-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .animate-marquee-left  { animation: marquee-left  35s linear infinite; }
+  .animate-marquee-right { animation: marquee-right 28s linear infinite; }
+  .marquee-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
+
+  .depo-card {
+    flex-shrink: 0;
+    width: 320px;
+    background: rgba(79,28,33,0.45);
+    border: 1px solid rgba(184,134,46,0.22);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.3s;
+  }
+  .depo-card:hover { border-color: rgba(184,134,46,0.55); }
+  .depo-card .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: #EDE2D6;
+    font-style: italic;
+    flex: 1;
+  }
+  .depo-card .author {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #B8862E;
+  }
+  .depo-card .stars { color: #B8862E; font-size: 0.75rem; letter-spacing: 2px; }
+</style>
+
+<section id="depoimentos" class="section-darker py-24 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="ornament mb-6">Quem Já Viveu</div>
+    <div class="text-center mb-14">
+      <h2 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight">
+        O que alunas dizem<br />
+        <em class="gold-text">depois de ativar o Código</em>
+      </h2>
+    </div>
+  </div>
+
+  <!-- Vídeo depoimento -->
+  <div class="max-w-sm mx-auto px-6 mb-14">
+    <div class="relative rounded-2xl overflow-hidden border border-dourado/30" style="aspect-ratio: 9/16;">
+      <video
+        controls
+        playsinline
+        class="w-full h-full object-cover"
+        poster=""
+      >
+        <source src="assets/depoimentos/depoimento-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p class="font-sans text-xs text-creme/40 text-center mt-3 tracking-wide">— Aluna, depoimento autorizado</p>
+  </div>
+
+  <!-- Faixa 1 — esquerda -->
+  <div class="marquee-wrapper mb-5">
+    <div class="marquee-track animate-marquee-left">
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Hoje consegui alcançar mais uma meta que estava no vision board que vc ensinou na mentoria."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Você consegue prender a gente na aula sem ficar cansativo — fomos das 29h às 23h. E se deixasse ficaríamos mais!"</p>
+        <span class="author">— Aluna, Imersão</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vocês são fantásticas... Cada vez amo mais as aulas de vocês. Já quero a próxima."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Orgulhosa de ser mentorada por duas gigantes! Parabéns em especial a Jacque pela nova conquista!"</p>
+        <span class="author">— Aluna, Mentoria Luxury</span>
+      </div>
+
+      <!-- duplicadas para loop -->
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Hoje consegui alcançar mais uma meta que estava no vision board que vc ensinou na mentoria."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Você consegue prender a gente na aula sem ficar cansativo — fomos das 29h às 23h. E se deixasse ficaríamos mais!"</p>
+        <span class="author">— Aluna, Imersão</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vocês são fantásticas... Cada vez amo mais as aulas de vocês. Já quero a próxima."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Orgulhosa de ser mentorada por duas gigantes! Parabéns em especial a Jacque pela nova conquista!"</p>
+        <span class="author">— Aluna, Mentoria Luxury</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Faixa 2 — direita -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track animate-marquee-right">
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"As outras mentoras que tive nunca me mandaram mensagem perguntando como eu estava após um problema. A Jacque me chamou."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vocês cuidam da gente de forma INTEIRA — não apenas trazendo conhecimento, mas cuidando da gente como seres individuais. Me sinto cuidada e abraçada."</p>
+        <span class="author">— Aluna, Mentoria Luxury</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vc arrasa demais. Orgulho de ser sua mentorada."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Ro que trabalho lindo, vc me enche de orgulho. Jacque, orgulho tenho eu de ser orientada de uma forma tão cuidadosa e carinhosa."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <!-- duplicadas para loop -->
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"As outras mentoras que tive nunca me mandaram mensagem perguntando como eu estava após um problema. A Jacque me chamou."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vocês cuidam da gente de forma INTEIRA — não apenas trazendo conhecimento, mas cuidando da gente como seres individuais. Me sinto cuidada e abraçada."</p>
+        <span class="author">— Aluna, Mentoria Luxury</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Vc arrasa demais. Orgulho de ser sua mentorada."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+      <div class="depo-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Ro que trabalho lindo, vc me enche de orgulho. Jacque, orgulho tenho eu de ser orientada de uma forma tão cuidadosa e carinhosa."</p>
+        <span class="author">— Aluna, Mentoria</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA pós-depoimentos -->
+  <div class="text-center mt-14 px-6">
+    <p class="font-serif text-2xl text-creme-pale italic mb-8">
+      Sua transformação pode ser a próxima.
+    </p>
+    <a href="#oferta" class="btn-gold inline-block px-10 py-4 rounded-full text-sm">
+      QUERO MINHA VAGA
+    </a>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════════ -->
+<section class="section-mid py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="ornament mb-16">Dúvidas Frequentes</div>
+
+    <div class="space-y-4" id="faq">
+
+      <details class="card-vinho rounded-2xl group" open>
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <span class="font-serif text-lg text-creme-pale">Preciso ter um negócio estruturado para participar?</span>
+          <span class="text-dourado text-xl transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <div class="px-6 pb-6">
+          <p class="font-sans text-sm text-creme/60 leading-relaxed">Sim. Esta imersão é para quem já oferece algum serviço, produto ou mentoria e quer elevar sua autoridade e presença. Se você ainda está no início da jornada empreendedora, pode participar — mas o melhor aproveitamento acontece com quem já tem algo ativo.</p>
+        </div>
+      </details>
+
+      <details class="card-vinho rounded-2xl group">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <span class="font-serif text-lg text-creme-pale">Posso assistir as aulas depois?</span>
+          <span class="text-dourado text-xl transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <div class="px-6 pb-6">
+          <p class="font-sans text-sm text-creme/60 leading-relaxed">Sim. Todas as sessões serão gravadas e ficam disponíveis para você rever no seu ritmo. Mas a experiência ao vivo é parte fundamental da imersão — a energia coletiva e a possibilidade de interação ao vivo fazem diferença.</p>
+        </div>
+      </details>
+
+      <details class="card-vinho rounded-2xl group">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <span class="font-serif text-lg text-creme-pale">Como funciona a garantia de 7 dias?</span>
+          <span class="text-dourado text-xl transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <div class="px-6 pb-6">
+          <p class="font-sans text-sm text-creme/60 leading-relaxed">Se dentro de 7 dias após a compra você sentir que esta imersão não é o que você precisava agora, basta entrar em contato e devolvemos 100% do valor pago. Sem burocracia, sem perguntas.</p>
+        </div>
+      </details>
+
+      <details class="card-vinho rounded-2xl group">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <span class="font-serif text-lg text-creme-pale">Qual é a diferença entre esta imersão e um curso de posicionamento?</span>
+          <span class="text-dourado text-xl transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <div class="px-6 pb-6">
+          <p class="font-sans text-sm text-creme/60 leading-relaxed">A maioria dos cursos de posicionamento trabalha com estratégia externa — o que comunicar, como comunicar, para quem. O Código trabalha de dentro para fora: quem você é, como sua identidade se manifesta e como isso se torna presença de mercado. É a raiz, não o galho.</p>
+        </div>
+      </details>
+
+      <details class="card-vinho rounded-2xl group">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <span class="font-serif text-lg text-creme-pale">Posso parcelar o investimento?</span>
+          <span class="text-dourado text-xl transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <div class="px-6 pb-6">
+          <p class="font-sans text-sm text-creme/60 leading-relaxed">Sim. O valor pode ser parcelado em até 12x no cartão de crédito. O valor à vista é R$97,00.</p>
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SEÇÃO DE IMAGENS — DETALHE ESTÉTICO
+═══════════════════════════════════════════════════ -->
+<section class="section-darker py-0 overflow-hidden">
+  <div class="grid grid-cols-4 h-48 sm:h-64">
+    <div class="overflow-hidden"><img src="assets/images/hands-rings.jpeg" alt="" class="w-full h-full object-cover img-vinheta hover:scale-105 transition-transform duration-700" /></div>
+    <div class="overflow-hidden"><img src="assets/images/door-handle.jpeg" alt="" class="w-full h-full object-cover img-vinheta hover:scale-105 transition-transform duration-700" /></div>
+    <div class="overflow-hidden"><img src="assets/images/woman-busts.jpeg" alt="" class="w-full h-full object-cover img-vinheta hover:scale-105 transition-transform duration-700" /></div>
+    <div class="overflow-hidden"><img src="assets/images/woman-coat.jpeg" alt="" class="w-full h-full object-cover img-vinheta hover:scale-105 transition-transform duration-700" /></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHAMADA FINAL — CTA
+═══════════════════════════════════════════════════ -->
+<section class="relative py-32 px-6 overflow-hidden section-darker">
+
+  <div class="absolute inset-0">
+    <img src="assets/images/woman-busts.jpeg" alt="" class="w-full h-full object-cover" style="filter: brightness(0.15) saturate(0.5);" />
+    <div class="absolute inset-0 bg-vinho-deep/80"></div>
+  </div>
+
+  <div class="relative z-10 max-w-2xl mx-auto text-center">
+
+    <div class="ornament mb-10">Sua Decisão</div>
+
+    <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-creme-pale leading-tight mb-8">
+      O mercado está esperando<br />
+      <em class="gold-text">a versão real de você.</em>
+    </h2>
+
+    <p class="font-sans text-sm text-creme/70 leading-relaxed mb-12 max-w-lg mx-auto">
+      Não a versão que você construiu para ser aceita. A versão que sabe quem é, que cobra o que vale e que atrai os clientes certos — porque sua identidade está totalmente ativada.
+    </p>
+
+    <!-- Final price reminder -->
+    <div class="inline-flex items-center gap-4 bg-vinho-dark/60 border border-dourado/30 rounded-2xl px-8 py-5 mb-8">
+      <div class="text-right">
+        <div class="font-sans text-xs text-creme/40 line-through">R$297</div>
+        <div class="font-serif text-3xl gold-text font-light">R$97</div>
+      </div>
+      <div class="w-px h-10 bg-dourado/20"></div>
+      <div class="text-left">
+        <div class="font-sans text-xs text-creme/60">24, 26 e 31 de março</div>
+        <div class="font-sans text-xs text-creme/60">3 encontros ao vivo · 19h</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <a href="https://hotmart.com/pt-br/marketplace/produtos/hagsxd-o-codigo-2pvtk/K99291801N" class="btn-gold inline-block px-12 py-5 rounded-full text-sm mb-4">
+        QUERO MINHA VAGA AGORA
+      </a>
+    </div>
+
+    <p class="font-sans text-xs text-creme/40">
+      Garantia de 7 dias · Acesso imediato após confirmação
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="section-deep py-12 px-6 border-t border-dourado/10" style="background: #0f0507;">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded opacity-80" />
+
+      <p class="font-sans text-xs text-creme/30 text-center">
+        © 2026 Jacqueline Fraga · Imersão O Código®<br />
+        Todos os direitos reservados.
+      </p>
+
+      <div class="flex gap-6">
+        <a href="#" class="font-sans text-xs text-creme/30 hover:text-creme/60 transition-colors">Política de Privacidade</a>
+        <a href="#" class="font-sans text-xs text-creme/30 hover:text-creme/60 transition-colors">Termos de Uso</a>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SCROLL REVEAL JS
+═══════════════════════════════════════════════════ -->
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ smooth open/close (no extra JS needed — using <details>)
+
+  // Sticky nav hide/show on scroll
+  let lastScroll = 0;
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current <= 80) { nav.style.transform = 'translateY(0)'; }
+    else if (current > lastScroll) { nav.style.transform = 'translateY(-100%)'; nav.style.transition = 'transform 0.3s'; }
+    else { nav.style.transform = 'translateY(0)'; }
+    lastScroll = current;
+  });
+</script>
+
+</body>
+</html>

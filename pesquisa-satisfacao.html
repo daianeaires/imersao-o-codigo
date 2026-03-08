@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesquisa de Satisfação — Imersão O Código®</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.65rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .card { background: rgba(79,28,33,0.45); border: 1px solid rgba(184,134,46,0.22); border-radius: 1rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border-radius: 9999px; padding: 0.3rem 0.9rem;
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .badge-gold  { background: rgba(184,134,46,0.12); border: 1px solid rgba(184,134,46,0.35); color: #B8862E; }
+    .badge-green { background: rgba(125,201,125,0.1); border: 1px solid rgba(125,201,125,0.3); color: #7dc97d; }
+    .badge-blue  { background: rgba(100,150,220,0.1); border: 1px solid rgba(100,150,220,0.3); color: #8ab4f8; }
+    .step-circle {
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px; flex-shrink: 0;
+      border: 1px solid rgba(184,134,46,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #B8862E;
+      background: #320F13;
+    }
+    .tip-box {
+      background: rgba(184,134,46,0.08); border-left: 3px solid #B8862E;
+      border-radius: 0 0.5rem 0.5rem 0; padding: 0.75rem 1rem; font-size: 0.75rem;
+    }
+    .msg-box {
+      background: #1a0709; border: 1px solid rgba(184,134,46,0.25);
+      border-radius: 0.75rem; padding: 1rem 1.25rem;
+      font-size: 0.82rem; line-height: 1.8; color: #EDE2D6;
+      position: relative; white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(184,134,46,0.15); border: 1px solid rgba(184,134,46,0.4);
+      border-radius: 0.4rem; padding: 0.25rem 0.6rem;
+      font-size: 0.6rem; color: #B8862E; cursor: pointer; letter-spacing: 0.08em;
+      transition: background 0.2s; font-family: 'Montserrat', sans-serif;
+    }
+    .copy-btn:hover { background: rgba(184,134,46,0.3); }
+    .copy-btn.copied { color: #7dc97d; border-color: #7dc97d; }
+    .flow-arrow { text-align: center; color: rgba(184,134,46,0.5); font-size: 1.5rem; padding: 0.25rem 0; }
+    .tool-card {
+      background: rgba(26,7,9,0.6); border: 1px solid rgba(184,134,46,0.2);
+      border-radius: 0.75rem; padding: 1rem;
+    }
+    .question-card {
+      background: rgba(26,7,9,0.5); border: 1px solid rgba(184,134,46,0.2);
+      border-radius: 0.75rem; padding: 1.25rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="py-10 px-6 text-center border-b border-dourado/15" style="background: #1a0709;">
+    <div class="max-w-xl mx-auto">
+      <div class="badge badge-gold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-dourado"></span>
+        Uso interno — equipe O Código
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-3">
+        Pesquisa de Satisfação<br />
+        <em class="gold-text">Automatizada</em>
+      </h1>
+      <p class="font-sans text-sm text-creme/60 leading-relaxed mt-4 max-w-md mx-auto">
+        Duas etapas: pesquisa rápida no <strong class="text-creme">WhatsApp</strong> + formulário completo no <strong class="text-creme">Typeform</strong> para capturar depoimentos.
+      </p>
+    </div>
+  </header>
+
+  <!-- Fluxo -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Como Funciona</div>
+    <div class="flex flex-col items-center gap-1 mb-4">
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">📅</div>
+        <div class="font-sans text-sm text-creme font-600">31 de março — 22h</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Manychat dispara a pesquisa rápida no WhatsApp (automático)</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">💬</div>
+        <div class="font-sans text-sm text-creme font-600">Aluna responde no WhatsApp</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Nota de 1 a 5 + transformação em uma frase</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">📝</div>
+        <div class="font-sans text-sm text-creme font-600">Manychat envia link do Typeform</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Para quem quiser deixar depoimento completo</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">📊</div>
+        <div class="font-sans text-sm text-creme font-600">Você recebe tudo organizado</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Respostas do WhatsApp no Manychat + Typeform em planilha</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTE 1: WHATSAPP -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Parte 1 — Pesquisa Rápida no WhatsApp</div>
+
+    <p class="font-sans text-xs text-creme/60 leading-relaxed mb-6">Configure no Manychat como um fluxo separado com gatilho de tempo — dispara automaticamente 1 hora após o encerramento da última sessão (31/03 às 22h).</p>
+
+    <!-- Mensagem 1 -->
+    <div class="mb-6">
+      <div class="badge badge-gold mb-3">Mensagem 1 — Abertura</div>
+      <div class="msg-box">
+        <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], a Imersão O Código® chegou ao fim. 🌹
+
+Foi uma honra ter você conosco nessa jornada.
+
+Tenho uma pergunta rápida — vai levar menos de 1 minuto e é muito importante para nós:
+
+*De 1 a 5, como você avalia a Imersão O Código® no geral?*
+
+1️⃣ Abaixo do esperado
+2️⃣ Regular
+3️⃣ Boa
+4️⃣ Muito boa
+5️⃣ Transformadora
+
+Me responde com o número. 🖤</div>
+    </div>
+
+    <div class="tip-box mb-6">
+      ✦ <strong>No Manychat:</strong> Configure cada número (1 a 5) como palavra-chave que aciona a próxima mensagem. Quem responder 4 ou 5 vai para o fluxo de depoimento. Quem responder 1, 2 ou 3 vai para o fluxo de feedback.
+    </div>
+
+    <!-- Mensagem 2A — Nota alta -->
+    <div class="mb-4">
+      <div class="badge badge-green mb-3">Mensagem 2A — Para quem deu nota 4 ou 5</div>
+      <div class="msg-box">
+        <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+Que alegria! Isso nos aquece o coração. 🖤
+
+Última pergunta, prometo:
+
+*Em uma frase, o que mudou em você depois da imersão?*
+
+Pode ser algo que você sentiu, percebeu ou decidiu. Qualquer coisa que tenha sido real pra você.</div>
+    </div>
+
+    <!-- Mensagem 2B — Nota baixa -->
+    <div class="mb-6">
+      <div class="badge badge-blue mb-3">Mensagem 2B — Para quem deu nota 1, 2 ou 3</div>
+      <div class="msg-box">
+        <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+Obrigada pela honestidade — isso é exatamente o que nos ajuda a melhorar. 🙏
+
+*O que poderia ter sido melhor na sua experiência?*
+
+Pode falar com liberdade. Sua opinião é muito valiosa para nós.</div>
+    </div>
+
+    <!-- Mensagem 3 — Link Typeform -->
+    <div class="mb-4">
+      <div class="badge badge-gold mb-3">Mensagem 3 — Link do Typeform (após qualquer resposta)</div>
+      <div class="msg-box">
+        <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+[nome], se quiser deixar um depoimento mais completo sobre sua experiência — que poderemos usar para inspirar outras mulheres — preparei um formulário rápido:
+
+👉 [INSERIR LINK DO TYPEFORM AQUI]
+
+É totalmente opcional. Mas se a imersão tocou em algo real em você, adoraríamos compartilhar sua história. 🌹
+
+Com gratidão,
+*Jacqueline Fraga*</div>
+    </div>
+  </section>
+
+  <!-- PARTE 2: TYPEFORM -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Parte 2 — Formulário no Typeform</div>
+
+    <p class="font-sans text-xs text-creme/60 leading-relaxed mb-6">Acesse <strong class="text-creme">typeform.com</strong>, crie uma conta gratuita e monte o formulário com as perguntas abaixo. Configure as cores: fundo <strong class="text-creme">#320F13</strong> e destaque <strong class="text-creme">#B8862E</strong>.</p>
+
+    <div class="space-y-4">
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 1 — Nota geral</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Opinion Scale (1 a 10)</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"De 1 a 10, qual nota você dá para a Imersão O Código®?"</p>
+      </div>
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 2 — Transformação</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Long Text</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"O que mudou em você — na sua identidade, presença ou forma de se posicionar — depois da imersão?"</p>
+      </div>
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 3 — Resultado concreto</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Long Text</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"Houve alguma ação, decisão ou resultado concreto que você tomou ou percebeu após a imersão?"</p>
+      </div>
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 4 — Indicação</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Multiple Choice</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"Você indicaria a Imersão O Código® para outra líder ou empreendedora?"</p>
+        <div class="mt-3 space-y-1">
+          <p class="font-sans text-xs text-creme/60">• Com certeza sim</p>
+          <p class="font-sans text-xs text-creme/60">• Sim, dependendo do perfil dela</p>
+          <p class="font-sans text-xs text-creme/60">• Ainda não tenho certeza</p>
+          <p class="font-sans text-xs text-creme/60">• Não indicaria</p>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 5 — Depoimento público</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Long Text</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"Se quiser deixar um depoimento que poderemos usar em nossas redes e página de vendas, escreva aqui. (opcional)"</p>
+      </div>
+
+      <div class="question-card">
+        <div class="badge badge-gold mb-3">Pergunta 6 — Autorização</div>
+        <p class="font-sans text-sm text-creme mb-1">Tipo: <strong>Multiple Choice</strong></p>
+        <p class="font-serif text-lg text-creme-pale italic mt-2">"Você autoriza o uso do seu depoimento nas redes sociais e materiais de divulgação?"</p>
+        <div class="mt-3 space-y-1">
+          <p class="font-sans text-xs text-creme/60">• Sim, pode usar com meu nome</p>
+          <p class="font-sans text-xs text-creme/60">• Sim, mas prefiro sem identificação</p>
+          <p class="font-sans text-xs text-creme/60">• Não autorizo</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box mt-6">
+      ✦ <strong>No Typeform:</strong> Após criar o formulário, vá em <strong>Share → Copy link</strong> e substitua <strong>[INSERIR LINK DO TYPEFORM AQUI]</strong> nas mensagens do Manychat acima.
+    </div>
+  </section>
+
+  <!-- Como ver os resultados -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Como Ver os Resultados</div>
+
+    <div class="card p-6 space-y-5">
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">1</div>
+        <div>
+          <p class="font-sans text-sm text-creme font-600 mb-1">Respostas do WhatsApp</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">No Manychat, vá em <strong class="text-creme">Audience</strong> e filtre pela tag <strong class="text-creme">alunas-o-codigo</strong>. Você verá as respostas de cada aluna no histórico de conversa.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">2</div>
+        <div>
+          <p class="font-sans text-sm text-creme font-600 mb-1">Respostas do Typeform</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">No Typeform, vá em <strong class="text-creme">Results → Responses</strong>. Você pode exportar tudo para Excel ou conectar ao Google Sheets automaticamente em <strong class="text-creme">Connect → Google Sheets</strong>.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">3</div>
+        <div>
+          <p class="font-sans text-sm text-creme font-600 mb-1">Depoimentos autorizados</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">Filtre as respostas onde a Pergunta 6 é "Sim, pode usar com meu nome" — esses são os depoimentos prontos para usar na próxima página de vendas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 text-center border-t border-dourado/10 mt-6" style="background: #0f0507;">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded mx-auto mb-4 opacity-70" />
+    <p class="font-sans text-xs text-creme/30">© 2026 Jacqueline Fraga · Imersão O Código®</p>
+    <p class="font-sans text-xs text-creme/20 mt-1">Documento interno — equipe O Código.</p>
+  </footer>
+
+  <script>
+    function copyMsg(btn) {
+      const box = btn.parentElement;
+      const text = box.innerText.replace('Copiar', '').replace('Copiado!', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

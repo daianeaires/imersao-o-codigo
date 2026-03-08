@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imersão O Código® 2026 — Jacqueline Fraga</title>
+  <meta name="description" content="A experiência que ativa sua identidade e estrutura seu posicionamento. 3 encontros ao vivo com Jacqueline Fraga. Por apenas R$97,00.">
+  <meta property="og:title" content="Imersão O Código® 2026 — Jacqueline Fraga">
+  <meta property="og:description" content="Você já sabe demais. Agora precisa integrar.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: '#5C1A25',
+            gold: '#B8862E',
+            'gold-light': '#D4A84B',
+            'warm-white': '#F9F7F4',
+            'text-main': '#1C0A10',
+            'text-muted': '#7A6960',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #FFFFFF;
+      color: #1C0A10;
+    }
+
+    /* ── TIPOGRAFIA ── */
+    .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.42em;
+      color: #B8862E;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO TIPO EDITORIAL ── */
+    .hero-word {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 0.88;
+      display: block;
+    }
+
+    /* ── LINHAS DOURADAS ── */
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E 30%, #B8862E 70%, transparent);
+    }
+    .gold-line-short {
+      width: 60px;
+      height: 1px;
+      background: #B8862E;
+      margin: 0 auto;
+    }
+    .gold-line-left {
+      width: 60px;
+      height: 1px;
+      background: #B8862E;
+    }
+
+    /* ── BOTÃO PRINCIPAL ── */
+    .btn-main {
+      display: inline-block;
+      background: #1C0A10;
+      color: #F9F7F4;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.8rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-main::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    .btn-main:hover { background: #5C1A25; }
+    .btn-main:hover::after { transform: translateX(100%); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid #1C0A10;
+      color: #1C0A10;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: #1C0A10;
+      color: #F9F7F4;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: #B8862E;
+      color: #1C0A10;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1.1rem 3rem;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover { background: #D4A84B; }
+
+    /* ── BULLET DOURADO ── */
+    .bullet-gold li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .bullet-gold li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      top: 0.08em;
+      color: #B8862E;
+      font-size: 0.5rem;
+    }
+
+    /* ── FAQ ── */
+    .faq-item { border-bottom: 1px solid #E8E0D8; }
+    .faq-item summary { cursor: pointer; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-icon { transition: transform 0.3s ease; display: inline-block; }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+    /* ── PAIN CARDS ── */
+    .pain-card {
+      border-left: 1px solid #B8862E;
+      padding-left: 1.5rem;
+    }
+
+    /* ── MÉTODO CARD ── */
+    .method-card {
+      border: 1px solid #E8E0D8;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .method-card:hover {
+      border-color: #B8862E;
+      transform: translateY(-4px);
+    }
+
+    /* ── FOTO ARCO ── */
+    .foto-arch {
+      width: 260px;
+      height: 320px;
+      border-radius: 130px 130px 0 0;
+      overflow: hidden;
+      border: 1px solid #E8E0D8;
+      background: #F9F7F4;
+      flex-shrink: 0;
+    }
+    .foto-arch img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── GRAIN SUTIL ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       HERO — EDITORIAL MINIMALISTA
+  ══════════════════════════════════════════════ -->
+  <section class="min-h-screen flex flex-col justify-center text-center px-6 py-24 bg-white relative">
+
+    <div class="max-w-4xl mx-auto relative z-10">
+
+      <p class="label mb-10 opacity-70">Jacqueline Fraga apresenta</p>
+
+      <!-- Logo tipográfico enorme -->
+      <div class="mb-12">
+        <p class="font-serif text-text-muted italic font-light tracking-[0.3em] text-base md:text-lg mb-1">Imersão</p>
+
+        <h1>
+          <span class="hero-word font-light italic text-text-main"
+                style="font-size: clamp(5rem, 18vw, 11rem)">O</span>
+          <span class="hero-word font-bold text-vinho tracking-[0.08em]"
+                style="font-size: clamp(4.5rem, 16vw, 10.5rem)">CÓDIGO</span>
+        </h1>
+
+        <p class="label mt-3 opacity-40">® 2026</p>
+      </div>
+
+      <!-- Divider -->
+      <div class="flex items-center justify-center gap-6 mb-10">
+        <div style="width:80px; height:1px; background:#B8862E; opacity:0.5"></div>
+        <span class="text-gold text-xs opacity-60">◆</span>
+        <div style="width:80px; height:1px; background:#B8862E; opacity:0.5"></div>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="font-serif text-text-main font-light italic text-3xl md:text-5xl leading-tight mb-4">
+        Você já sabe demais.<br>
+        <span class="font-semibold not-italic text-vinho">Agora precisa integrar.</span>
+      </h2>
+
+      <p class="font-sans text-text-muted text-sm leading-relaxed mb-12 max-w-lg mx-auto">
+        A experiência que ativa identidade, estrutura posicionamento
+        e consolida presença feminina inegociável.
+      </p>
+
+      <!-- CTA -->
+      <a href="https://go.hotmart.com/K99291801N?dp=1" target="_blank" class="btn-main mb-8">
+        EU QUERO PARTICIPAR DA IMERSÃO
+      </a>
+
+      <!-- Datas -->
+      <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-2">
+        <span class="label opacity-50">24.03 · Terça</span>
+        <span class="text-gold opacity-30 text-xs">◆</span>
+        <span class="label opacity-50">26.03 · Quinta</span>
+        <span class="text-gold opacity-30 text-xs">◆</span>
+        <span class="label opacity-50">31.03 · Dúvidas</span>
+        <span class="text-gold opacity-30 text-xs">◆</span>
+        <span class="label opacity-50">Sempre às 19h</span>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20">
+      <div style="width:1px; height:50px; background: linear-gradient(180deg, transparent, #B8862E); margin:0 auto;"></div>
+    </div>
+  </section>
+
+  <!-- Divisor full -->
+  <div class="gold-line opacity-30"></div>
+
+  <!-- ══════════════════════════════════════════════
+       ENTENDA O CÓDIGO
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-warm-white">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">Antes de continuar</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic">Entenda O Código</h2>
+        <div class="gold-line-short mt-5"></div>
+      </div>
+
+      <!-- NÃO É -->
+      <div class="mb-10">
+        <h3 class="font-serif text-text-main text-2xl font-semibold mb-6">
+          O que O Código <span class="text-vinho underline underline-offset-4">NÃO</span> é:
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4 border-b border-gray-100 pb-4">
+            <span class="text-text-muted/40 text-sm mt-0.5 flex-shrink-0">✕</span>
+            <p class="font-sans text-text-muted text-sm leading-relaxed">Curso de arquétipos que você assiste e esquece</p>
+          </li>
+          <li class="flex items-start gap-4 border-b border-gray-100 pb-4">
+            <span class="text-text-muted/40 text-sm mt-0.5 flex-shrink-0">✕</span>
+            <p class="font-sans text-text-muted text-sm leading-relaxed">Aula teórica sobre posicionamento</p>
+          </li>
+          <li class="flex items-start gap-4 border-b border-gray-100 pb-4">
+            <span class="text-text-muted/40 text-sm mt-0.5 flex-shrink-0">✕</span>
+            <p class="font-sans text-text-muted text-sm leading-relaxed">Workshop motivacional com frases bonitas</p>
+          </li>
+          <li class="flex items-start gap-4">
+            <span class="text-text-muted/40 text-sm mt-0.5 flex-shrink-0">✕</span>
+            <p class="font-sans text-text-muted text-sm leading-relaxed">Fórmula pronta ou palco sem processo interno</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quote divisor -->
+      <div class="text-center py-10">
+        <p class="font-serif text-text-main text-xl md:text-2xl italic font-light leading-relaxed">
+          Acesse o código que ativa e acelera<br>a sua transformação interna e externa.
+        </p>
+      </div>
+
+      <!-- É -->
+      <div class="border border-gold/30 p-8 md:p-10">
+        <h3 class="font-serif text-text-main text-2xl font-semibold mb-5">
+          O que O Código <span class="text-vinho">É:</span>
+        </h3>
+        <p class="font-sans text-text-muted text-sm leading-relaxed">
+          Uma experiência de <strong class="text-text-main">ativação de identidade</strong> e estruturação estratégica para mulheres que decidiram parar de performar e começar a <strong class="text-text-main">liderar com presença autêntica e inegociável.</strong>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       O MERCADO MUDOU
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">Como O Código vai me ajudar?</p>
+        <div class="gold-line-short"></div>
+      </div>
+
+      <div class="space-y-8 mb-14">
+
+        <div class="flex items-start gap-6 pb-8 border-b border-gray-100">
+          <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+          <div>
+            <p class="font-sans font-bold text-text-main text-sm tracking-wide mb-1">ARQUÉTIPO VIROU MODA</p>
+            <p class="font-sans text-text-muted text-sm">Todo mundo fala, pouca gente integra de verdade</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6 pb-8 border-b border-gray-100">
+          <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+          <div>
+            <p class="font-sans font-bold text-text-main text-sm tracking-wide mb-1">POSICIONAMENTO VIROU PALAVRA VAZIA</p>
+            <p class="font-sans text-text-muted text-sm">Repetido, mas sem estrutura real</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+          <div>
+            <p class="font-sans font-bold text-text-main text-sm tracking-wide mb-1">INFORMAÇÃO VIROU EXCESSO</p>
+            <p class="font-sans text-text-muted text-sm">Mais conteúdo, menos clareza</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Destaque central -->
+      <div class="text-center py-8 border-t border-b border-gold/20">
+        <p class="font-serif text-vinho text-2xl md:text-3xl italic font-semibold">
+          Integração virou o verdadeiro diferencial.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       VOCÊ ESTÁ AQUI PORQUE
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-warm-white">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-14">
+        <p class="label mb-5">Você sente:</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-6xl font-light italic leading-tight">
+          Você está aqui<br>porque…
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-10 mb-16">
+
+        <div class="pain-card">
+          <h3 class="font-serif text-vinho text-xl font-semibold mb-2">Oscilação de posicionamento</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">Muda de direção a cada novo aprendizado. Nunca se fixa em nada porque nada parece completamente certo.</p>
+        </div>
+
+        <div class="pain-card">
+          <h3 class="font-serif text-vinho text-xl font-semibold mb-2">Insegurança ao comunicar</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">Sabe muito, mas trava na hora de se apresentar. A mensagem não traduz quem você realmente é.</p>
+        </div>
+
+        <div class="pain-card">
+          <h3 class="font-serif text-vinho text-xl font-semibold mb-2">Medo de parecer "mais do mesmo"</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">Sua voz se perde no ruído de quem faz igual — e você não sabe como mudar isso.</p>
+        </div>
+
+        <div class="pain-card">
+          <h3 class="font-serif text-vinho text-xl font-semibold mb-2">Perda de autoridade</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">Entrega muito e é reconhecida de menos. A lacuna entre o que você é e o que o mercado vê.</p>
+        </div>
+
+      </div>
+
+      <!-- Frase central -->
+      <div class="text-center">
+        <div class="gold-line-short mb-8"></div>
+        <p class="font-serif text-text-main text-2xl md:text-4xl font-light italic leading-relaxed">
+          O problema não é falta de conhecimento.<br>
+          <span class="text-vinho font-semibold not-italic">É falta de integração.</span>
+        </p>
+        <div class="gold-line-short mt-8"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       O QUE VOCÊ VAI RECEBER
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">Tudo incluso</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic mb-5">
+          O que você vai receber
+        </h2>
+        <div class="gold-line-short"></div>
+      </div>
+
+      <ul class="bullet-gold space-y-0">
+        <li class="border-b border-gray-100 pb-5">
+          <p class="font-sans font-semibold text-text-main text-sm mb-1">3 Encontros ao Vivo + Replay por 30 dias</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Imersão online completa com acesso à gravação para revisar no seu ritmo</p>
+        </li>
+        <li class="border-b border-gray-100 py-5">
+          <p class="font-sans font-semibold text-text-main text-sm mb-1">Diagnóstico Simbólico</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Mapeamento completo de identidade: arquétipo, temperamento e padrão comportamental</p>
+        </li>
+        <li class="border-b border-gray-100 py-5">
+          <p class="font-sans font-semibold text-text-main text-sm mb-1">Estrutura de Posicionamento Aplicável</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Clareza interna + direção externa para comunicar sua essência com autoridade</p>
+        </li>
+        <li class="pt-5">
+          <p class="font-sans font-semibold text-text-main text-sm mb-1">Ambiente Seletivo + Espaço de Dúvidas</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Grupo exclusivo do WhatsApp com suporte durante toda a imersão</p>
+        </li>
+      </ul>
+
+      <div class="text-center mt-14">
+        <a href="https://go.hotmart.com/K99291801N?dp=1" target="_blank" class="btn-outline">
+          EU QUERO PARTICIPAR
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       PARA QUEM É / NÃO É
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-warm-white">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="grid md:grid-cols-2 gap-12">
+
+        <!-- Para quem É -->
+        <div>
+          <p class="label mb-5">Para quem é</p>
+          <h2 class="font-serif text-text-main text-3xl font-light italic mb-8">Esta imersão é para você</h2>
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+              <p class="font-sans text-text-muted text-sm leading-relaxed">Mulheres que já sabem demais e precisam de <strong class="text-text-main">integração</strong>, não de mais informação</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+              <p class="font-sans text-text-muted text-sm leading-relaxed">Líderes, mentoras e empreendedoras que querem se posicionar com clareza e autoridade</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-gold text-xs mt-1 flex-shrink-0">◆</span>
+              <p class="font-sans text-text-muted text-sm leading-relaxed">Quem sente que sua voz se perde no ruído e quer liderar com presença autêntica</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Para quem NÃO é -->
+        <div class="border-l border-gray-200 pl-12">
+          <p class="label mb-5 opacity-50">Para quem não é</p>
+          <h2 class="font-serif text-text-muted text-3xl font-light italic mb-8">Esta imersão não é para você</h2>
+          <ul class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="text-text-muted/30 text-sm mt-0.5 flex-shrink-0">✕</span>
+              <p class="font-sans text-text-muted/60 text-sm leading-relaxed">Quem busca fórmula pronta ou palco sem processo interno</p>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="text-text-muted/30 text-sm mt-0.5 flex-shrink-0">✕</span>
+              <p class="font-sans text-text-muted/60 text-sm leading-relaxed">Quem não está disposta a olhar para dentro e integrar com honestidade</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       O MÉTODO
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">O coração da imersão</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic mb-2">O Método</h2>
+        <p class="font-serif text-gold text-xl italic mb-5">(Triângulo do Código)</p>
+        <div class="gold-line-short"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="method-card p-8 text-center">
+          <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-6">
+            <span class="font-serif text-gold text-2xl italic">I</span>
+          </div>
+          <h3 class="font-serif text-text-main text-xl font-bold mb-3">Identidade Estruturada</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">
+            Integrar arquétipo, temperamento e padrões comportamentais em uma identidade coesa e aplicável
+          </p>
+        </div>
+
+        <div class="method-card p-8 text-center bg-vinho border-vinho">
+          <div class="w-12 h-12 border border-gold/40 flex items-center justify-center mx-auto mb-6">
+            <span class="font-serif text-gold-light text-2xl italic">P</span>
+          </div>
+          <h3 class="font-serif text-gold-light text-xl font-bold mb-3">Presença Consciente</h3>
+          <p class="font-sans text-white/65 text-sm leading-relaxed">
+            Ocupar espaço com intenção, sem explicar, convencer ou performar para ser aceita
+          </p>
+        </div>
+
+        <div class="method-card p-8 text-center">
+          <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-6">
+            <span class="font-serif text-gold text-2xl italic">D</span>
+          </div>
+          <h3 class="font-serif text-text-main text-xl font-bold mb-3">Decisão Estratégica</h3>
+          <p class="font-sans text-text-muted text-sm leading-relaxed">
+            Consistência que nasce de decisões alinhadas à sua essência, não do que o mercado pede
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       JACQUELINE FRAGA
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-warm-white">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">Sua mentora</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic">Quem é Jacqueline Fraga</h2>
+        <div class="gold-line-short mt-5"></div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-14 items-start">
+
+        <!-- Foto -->
+        <div class="mx-auto md:mx-0 flex-shrink-0">
+          <div class="foto-arch">
+            <div class="w-full h-full flex items-center justify-center">
+              <div class="text-center">
+                <span class="font-serif text-gold text-5xl font-light">JF</span>
+                <p class="font-sans text-text-muted/40 text-xs mt-2 tracking-widest">FOTO AQUI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="flex-1">
+
+          <p class="font-serif text-text-main text-2xl italic font-light mb-6 leading-relaxed">
+            Jornalista. Palestrante. Especialista em<br>
+            <span class="text-gold">Análise Facial, Comportamental e Identidade.</span>
+          </p>
+
+          <p class="font-sans text-text-muted text-sm leading-relaxed mb-4">
+            Especialista em Morfopsicologia, Fisiognomonia, Visagismo, Linguagem Corporal, Análise Facial e Comportamental, Consultoria de Imagem, Linguagem Visual e Comunicação não Verbal. Pós-graduada em Gestão Integrada da Imagem com chancela pela <strong class="text-text-main">Harvard Business School</strong>.
+          </p>
+
+          <p class="font-sans text-text-muted text-sm leading-relaxed mb-4">
+            Criadora do <strong class="text-text-main">Método JFraga</strong> de Análise Facial e Comportamental. Autora do Curso Análise Facial para Negócios.
+          </p>
+
+          <p class="font-sans text-text-muted text-sm leading-relaxed mb-8">
+            Co-autora dos livros <em>"Vista-se para o Sucesso"</em> e <em>"Empodere-se AGORA!"</em>. Mentora e consultora para empreendedoras, executivas e empresas.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="border border-gray-200 text-text-muted font-sans text-xs px-4 py-2">Harvard Business School</span>
+            <span class="border border-gray-200 text-text-muted font-sans text-xs px-4 py-2">Método JFraga</span>
+            <span class="border border-gray-200 text-text-muted font-sans text-xs px-4 py-2">Análise Facial</span>
+            <span class="border border-gray-200 text-text-muted font-sans text-xs px-4 py-2">Co-Autora</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       OFERTA — DATAS + PREÇO
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-white">
+    <div class="max-w-2xl mx-auto text-center">
+
+      <p class="label mb-5">Acontece ao vivo</p>
+      <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic mb-2">A Imersão O Código</h2>
+      <p class="label mb-10" style="color:#B8862E">REPLAY DISPONÍVEL POR 30 DIAS</p>
+      <div class="gold-line-short mb-12"></div>
+
+      <!-- Calendário clean -->
+      <div class="border border-gray-200 p-8 mb-10 text-left">
+        <p class="label mb-6">3 Encontros ao vivo</p>
+        <div class="space-y-5">
+          <div class="flex justify-between items-baseline border-b border-gray-100 pb-4">
+            <span class="font-sans text-text-muted text-xs">Terça</span>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif text-text-main text-2xl font-semibold">24 de Março</span>
+              <span class="font-sans text-text-muted text-xs">19h</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline border-b border-gray-100 pb-4">
+            <span class="font-sans text-text-muted text-xs">Quinta</span>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif text-text-main text-2xl font-semibold">26 de Março</span>
+              <span class="font-sans text-text-muted text-xs">19h</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-baseline">
+            <span class="font-sans text-text-muted text-xs">Dúvidas</span>
+            <div class="flex items-baseline gap-3">
+              <span class="font-serif text-text-main text-2xl font-semibold">31 de Março</span>
+              <span class="font-sans text-text-muted text-xs">19h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preço -->
+      <div class="mb-10">
+        <p class="font-sans text-text-muted text-xs tracking-widest uppercase mb-2">Investimento simbólico</p>
+        <p class="font-serif text-text-main text-6xl font-light italic mb-1">R$97</p>
+        <p class="font-sans text-text-muted text-xs">,00 — acesso completo</p>
+      </div>
+
+      <a href="https://go.hotmart.com/K99291801N?dp=1" target="_blank" class="btn-main mb-6 block text-center">
+        GARANTA SUA VAGA AGORA
+      </a>
+
+      <p class="font-sans text-text-muted/60 text-xs">
+        Você ainda recebe materiais extras e prioridade na oferta da Mentoria Luxury!
+      </p>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       TRUST / GARANTIAS
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-warm-white">
+    <div class="max-w-2xl mx-auto">
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-12">
+        <div>
+          <p class="font-serif text-text-main text-3xl font-light italic mb-2">7</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Dias de garantia blindada</p>
+        </div>
+        <div>
+          <p class="font-serif text-text-main text-3xl font-light italic mb-2">100%</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Online e ao vivo</p>
+        </div>
+        <div>
+          <p class="font-serif text-text-main text-3xl font-light italic mb-2">30</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Dias de replay disponível</p>
+        </div>
+        <div>
+          <p class="font-serif text-text-main text-3xl font-light italic mb-2">✦</p>
+          <p class="font-sans text-text-muted text-xs leading-relaxed">Bônus exclusivos inclusos</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="font-serif text-text-main text-xl italic font-light mb-8">
+          Você não tem nada a perder, e tudo a ganhar.
+        </p>
+        <a href="https://go.hotmart.com/K99291801N?dp=1" target="_blank" class="btn-outline">
+          QUERO PARTICIPAR DA IMERSÃO
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-line opacity-20"></div>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="py-28 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+
+      <div class="text-center mb-16">
+        <p class="label mb-5">Tire suas dúvidas</p>
+        <h2 class="font-serif text-text-main text-4xl md:text-5xl font-light italic">Perguntas Frequentes</h2>
+        <div class="gold-line-short mt-5"></div>
+      </div>
+
+      <div class="space-y-0">
+
+        <details class="faq-item py-6">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-sans text-text-main font-medium text-sm">Por quanto tempo tenho acesso?</span>
+            <span class="faq-icon text-text-muted text-xl flex-shrink-0 font-light">+</span>
+          </summary>
+          <p class="font-sans text-text-muted text-sm leading-relaxed mt-4 pr-8">
+            Gravação da imersão disponível por 30 dias. Acesso à gravação completa para revisar o conteúdo, reforçar aprendizados e aplicar no seu ritmo.
+          </p>
+        </details>
+
+        <details class="faq-item py-6">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-sans text-text-main font-medium text-sm">Tem suporte?</span>
+            <span class="faq-icon text-text-muted text-xl flex-shrink-0 font-light">+</span>
+          </summary>
+          <p class="font-sans text-text-muted text-sm leading-relaxed mt-4 pr-8">
+            Sim! Você terá todo suporte e tira dúvidas dentro do grupo exclusivo do WhatsApp.
+          </p>
+        </details>
+
+        <details class="faq-item py-6">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-sans text-text-main font-medium text-sm">E se eu não puder assistir ao vivo?</span>
+            <span class="faq-icon text-text-muted text-xl flex-shrink-0 font-light">+</span>
+          </summary>
+          <p class="font-sans text-text-muted text-sm leading-relaxed mt-4 pr-8">
+            Sem problema. O replay de cada encontro fica disponível por 30 dias para você assistir quando e quantas vezes quiser.
+          </p>
+        </details>
+
+        <details class="faq-item py-6">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-sans text-text-main font-medium text-sm">Como funciona a garantia?</span>
+            <span class="faq-icon text-text-muted text-xl flex-shrink-0 font-light">+</span>
+          </summary>
+          <p class="font-sans text-text-muted text-sm leading-relaxed mt-4 pr-8">
+            7 dias de garantia blindada. Se por qualquer motivo não ficar satisfeita, devolvemos 100% do investimento sem perguntas.
+          </p>
+        </details>
+
+        <details class="faq-item py-6">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-sans text-text-main font-medium text-sm">Já fiz cursos de arquétipo. O Código é diferente?</span>
+            <span class="faq-icon text-text-muted text-xl flex-shrink-0 font-light">+</span>
+          </summary>
+          <p class="font-sans text-text-muted text-sm leading-relaxed mt-4 pr-8">
+            Completamente. O Código não ensina arquétipo — ele integra identidade, comportamento e decisão. Se você já sabe o que é arquétipo e ainda se sente oscilando, é exatamente para isso que esta imersão existe.
+          </p>
+        </details>
+
+      </div>
+
+      <!-- CTA final no FAQ -->
+      <div class="text-center mt-14">
+        <a href="https://go.hotmart.com/K99291801N?dp=1" target="_blank" class="btn-gold">
+          EU QUERO ACESSAR O CÓDIGO
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="py-16 px-6 border-t border-gray-100 text-center bg-white">
+    <div class="max-w-xl mx-auto">
+      <div class="font-serif text-text-main mb-4 flex items-baseline justify-center gap-2">
+        <span class="text-sm italic text-text-muted font-light">Imersão</span>
+        <span class="text-xl font-bold tracking-widest">O CÓDIGO</span>
+        <span class="text-xs text-text-muted/40">®</span>
+      </div>
+      <div class="gold-line-short mb-6"></div>
+      <p class="font-sans text-text-muted/40 text-xs">© 2026 Jacqueline Fraga · Todos os direitos reservados</p>
+      <p class="font-sans text-text-muted/30 text-xs mt-2">Ao se inscrever, você concorda com os termos da Hotmart.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('toggle', () => {
+        item.querySelector('.faq-icon').textContent = item.open ? '−' : '+';
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resumo Automático das Aulas — Imersão O Código®</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.65rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .card { background: rgba(79,28,33,0.45); border: 1px solid rgba(184,134,46,0.22); border-radius: 1rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      border-radius: 9999px; padding: 0.3rem 0.9rem;
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .badge-gold { background: rgba(184,134,46,0.12); border: 1px solid rgba(184,134,46,0.35); color: #B8862E; }
+    .badge-green { background: rgba(125,201,125,0.1); border: 1px solid rgba(125,201,125,0.3); color: #7dc97d; }
+    .step-circle {
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px; flex-shrink: 0;
+      border: 1px solid rgba(184,134,46,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #B8862E;
+      background: #320F13;
+    }
+    .tip-box {
+      background: rgba(184,134,46,0.08); border-left: 3px solid #B8862E;
+      border-radius: 0 0.5rem 0.5rem 0; padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+    }
+    .flow-arrow {
+      text-align: center; color: rgba(184,134,46,0.5); font-size: 1.5rem;
+      padding: 0.25rem 0;
+    }
+    .tool-card {
+      background: rgba(26,7,9,0.6);
+      border: 1px solid rgba(184,134,46,0.2);
+      border-radius: 0.75rem; padding: 1rem;
+    }
+    .msg-box {
+      background: #1a0709; border: 1px solid rgba(184,134,46,0.25);
+      border-radius: 0.75rem; padding: 1rem 1.25rem;
+      font-size: 0.82rem; line-height: 1.8; color: #EDE2D6;
+      position: relative; white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(184,134,46,0.15); border: 1px solid rgba(184,134,46,0.4);
+      border-radius: 0.4rem; padding: 0.25rem 0.6rem;
+      font-size: 0.6rem; color: #B8862E; cursor: pointer; letter-spacing: 0.08em;
+      transition: background 0.2s; font-family: 'Montserrat', sans-serif;
+    }
+    .copy-btn:hover { background: rgba(184,134,46,0.3); }
+    .copy-btn.copied { color: #7dc97d; border-color: #7dc97d; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="py-10 px-6 text-center border-b border-dourado/15" style="background: #1a0709;">
+    <div class="max-w-xl mx-auto">
+      <div class="badge badge-gold mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-dourado"></span>
+        Uso interno — equipe O Código
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-3">
+        Resumo Automático<br />
+        <em class="gold-text">das Aulas</em>
+      </h1>
+      <p class="font-sans text-sm text-creme/60 leading-relaxed mt-4 max-w-md mx-auto">
+        Configure uma vez — após cada sessão ao vivo, o resumo é gerado pela IA e enviado automaticamente no WhatsApp das alunas.
+      </p>
+    </div>
+  </header>
+
+  <!-- Fluxo visual -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Como Funciona</div>
+
+    <div class="flex flex-col items-center gap-1 mb-10">
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">🎥</div>
+        <div class="font-sans text-sm text-creme font-600">Zoom</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Grava a aula e salva na nuvem automaticamente</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">⚡</div>
+        <div class="font-sans text-sm text-creme font-600">Zapier</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Detecta a gravação nova e aciona a IA</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">🤖</div>
+        <div class="font-sans text-sm text-creme font-600">OpenAI (ChatGPT)</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Lê a transcrição e gera o resumo da aula</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="tool-card w-full text-center">
+        <div class="text-2xl mb-1">💬</div>
+        <div class="font-sans text-sm text-creme font-600">Manychat</div>
+        <div class="font-sans text-xs text-creme/50 mt-1">Envia o resumo no WhatsApp das alunas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTE 1: ZOOM -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Passo 1 — Configurar o Zoom</div>
+
+    <div class="space-y-4">
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">1</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Ativar gravação automática na nuvem</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">No Zoom, vá em <strong class="text-creme">Settings → Recording → Cloud Recording</strong> e ative. Marque também <strong class="text-creme">"Audio transcript"</strong> — isso faz o Zoom transcrever a aula automaticamente em texto.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">2</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Verificar o plano</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">A gravação em nuvem requer o plano <strong class="text-creme">Zoom Pro</strong> ou superior (a partir de US$15/mês). Se ainda não tem, é necessário fazer o upgrade.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">3</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Testar antes da imersão</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">Faça uma reunião de teste e verifique se a gravação e a transcrição aparecem em <strong class="text-creme">zoom.us → Recordings</strong> após o encerramento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box mt-6">
+      ✦ <strong>Dica:</strong> O Zoom demora entre 15-30 minutos para processar a gravação e a transcrição após o fim da aula. O Zapier só vai agir depois que isso estiver pronto.
+    </div>
+  </section>
+
+  <!-- PARTE 2: ZAPIER -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Passo 2 — Configurar o Zapier</div>
+
+    <div class="card p-6 mb-6">
+      <p class="font-sans text-xs text-creme/60 leading-relaxed mb-4">Acesse <strong class="text-creme">zapier.com</strong>, crie uma conta gratuita e clique em <strong class="text-creme">"Create Zap"</strong>. Configure assim:</p>
+
+      <div class="space-y-5">
+
+        <div>
+          <div class="badge badge-gold mb-3">Gatilho (Trigger)</div>
+          <div class="tool-card">
+            <p class="font-sans text-xs text-creme font-600 mb-1">App: <span class="text-dourado">Zoom</span></p>
+            <p class="font-sans text-xs text-creme/60">Evento: <strong class="text-creme">Recording Completed</strong></p>
+            <p class="font-sans text-xs text-creme/50 mt-2">→ Conecte sua conta Zoom quando solicitado.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div>
+          <div class="badge badge-gold mb-3">Ação 1 — Buscar transcrição</div>
+          <div class="tool-card">
+            <p class="font-sans text-xs text-creme font-600 mb-1">App: <span class="text-dourado">Zoom</span></p>
+            <p class="font-sans text-xs text-creme/60">Evento: <strong class="text-creme">Get Recording Transcript</strong></p>
+            <p class="font-sans text-xs text-creme/50 mt-2">→ Use o ID da gravação que veio do gatilho.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div>
+          <div class="badge badge-gold mb-3">Ação 2 — Gerar resumo com IA</div>
+          <div class="tool-card">
+            <p class="font-sans text-xs text-creme font-600 mb-1">App: <span class="text-dourado">OpenAI (ChatGPT)</span></p>
+            <p class="font-sans text-xs text-creme/60">Evento: <strong class="text-creme">Send Prompt</strong></p>
+            <p class="font-sans text-xs text-creme/50 mt-2">→ No campo "Prompt", cole o texto abaixo e adicione a transcrição no final.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div>
+          <div class="badge badge-gold mb-3">Ação 3 — Enviar no WhatsApp</div>
+          <div class="tool-card">
+            <p class="font-sans text-xs text-creme font-600 mb-1">App: <span class="text-dourado">Manychat</span></p>
+            <p class="font-sans text-xs text-creme/60">Evento: <strong class="text-creme">Send Message to Subscriber Tag</strong></p>
+            <p class="font-sans text-xs text-creme/50 mt-2">→ Selecione a tag "alunas-o-codigo" e use a resposta da OpenAI como conteúdo da mensagem.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tip-box">
+      ✦ <strong>Sobre o plano Zapier:</strong> O plano gratuito permite até 100 tarefas/mês — suficiente para as 3 sessões da imersão. Para uso contínuo em outros produtos, considere o plano Starter (US$20/mês).
+    </div>
+  </section>
+
+  <!-- PARTE 3: PROMPT DA IA -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Passo 3 — Prompt para o ChatGPT</div>
+
+    <p class="font-sans text-xs text-creme/60 leading-relaxed mb-5">Cole este prompt no campo de instrução da OpenAI no Zapier. No final, o Zapier vai anexar automaticamente a transcrição da aula.</p>
+
+    <div class="msg-box">
+      <button class="copy-btn" onclick="copyMsg(this)">Copiar</button>
+Você é um assistente especializado em educação e desenvolvimento pessoal. Receberá a transcrição de uma aula ao vivo da Imersão O Código® — uma imersão de identidade e posicionamento para líderes e empreendedoras, conduzida por Jacqueline Fraga.
+
+Sua tarefa é criar um resumo da aula para ser enviado no WhatsApp das alunas. O resumo deve:
+
+1. Ter no máximo 300 palavras
+2. Começar com uma frase de impacto que capture a essência da aula
+3. Listar os 3-5 principais aprendizados em tópicos curtos (use • como marcador)
+4. Terminar com 1 pergunta reflexiva para a aluna aplicar o conteúdo
+5. Usar linguagem calorosa, direta e elegante — no tom de Jacqueline Fraga
+6. NÃO usar jargões de marketing genéricos
+
+Formato de saída (use exatamente este formato):
+🌹 *[título da sessão]*
+
+[frase de impacto]
+
+*O que vivemos hoje:*
+• [aprendizado 1]
+• [aprendizado 2]
+• [aprendizado 3]
+
+*Para você refletir até a próxima sessão:*
+[pergunta reflexiva]
+
+— Jacqueline Fraga 🖤
+
+Transcrição da aula:
+[O ZAPIER VAI INSERIR A TRANSCRIÇÃO AQUI AUTOMATICAMENTE]</div>
+
+    <div class="tip-box mt-5">
+      ✦ <strong>Atenção:</strong> No Zapier, após colar o prompt, clique no campo e adicione o dado dinâmico da transcrição no lugar de "[O ZAPIER VAI INSERIR...]". Ele vai aparecer como uma variável azul na interface.
+    </div>
+  </section>
+
+  <!-- PARTE 4: MANYCHAT -->
+  <section class="py-6 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Passo 4 — Configurar o Manychat</div>
+
+    <div class="space-y-4">
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">1</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Criar uma tag para as alunas</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">No Manychat, vá em <strong class="text-creme">Audience → Tags</strong> e crie a tag <strong class="text-creme">alunas-o-codigo</strong>. Toda aluna que comprar pela Hotmart deve receber essa tag automaticamente (configure no fluxo pós-compra que já criamos).</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">2</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Obter a chave de API</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">No Manychat, vá em <strong class="text-creme">Settings → API</strong> e copie sua chave de API. Você vai precisar dela para conectar ao Zapier.</p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div class="step-circle">3</div>
+        <div class="flex-1">
+          <p class="font-sans text-sm text-creme font-600 mb-1">Conectar no Zapier</p>
+          <p class="font-sans text-xs text-creme/60 leading-relaxed">Na Ação 3 do Zapier, ao conectar o Manychat, cole a chave de API quando solicitado. Escolha a tag <strong class="text-creme">alunas-o-codigo</strong> como destinatária e use a resposta da OpenAI como corpo da mensagem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resumo do fluxo -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Resumo — O Que Você Precisa</div>
+
+    <div class="card p-6">
+      <div class="space-y-4">
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <div>
+            <p class="font-sans text-sm text-creme">Zoom Pro</p>
+            <p class="font-sans text-xs text-creme/40">Gravação em nuvem + transcrição automática</p>
+          </div>
+          <span class="font-sans text-xs text-creme/50">US$15/mês</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <div>
+            <p class="font-sans text-sm text-creme">Zapier</p>
+            <p class="font-sans text-xs text-creme/40">Conecta tudo — gratuito para 3 sessões</p>
+          </div>
+          <span class="badge badge-green">Gratuito</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-dourado/10">
+          <div>
+            <p class="font-sans text-sm text-creme">OpenAI</p>
+            <p class="font-sans text-xs text-creme/40">Gera o resumo — custo por uso (muito baixo)</p>
+          </div>
+          <span class="font-sans text-xs text-creme/50">~R$0,50/aula</span>
+        </div>
+        <div class="flex justify-between items-center py-2">
+          <div>
+            <p class="font-sans text-sm text-creme">Manychat</p>
+            <p class="font-sans text-xs text-creme/40">Envia no WhatsApp — já configurado</p>
+          </div>
+          <span class="badge badge-green">Já tem</span>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-dourado/15">
+        <p class="font-sans text-xs text-creme/50 text-center">Custo total para as 3 sessões da imersão: <strong class="text-creme">praticamente zero</strong> além do Zoom Pro que você já pode ter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 text-center border-t border-dourado/10 mt-6" style="background: #0f0507;">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded mx-auto mb-4 opacity-70" />
+    <p class="font-sans text-xs text-creme/30">© 2026 Jacqueline Fraga · Imersão O Código®</p>
+    <p class="font-sans text-xs text-creme/20 mt-1">Documento interno — equipe O Código.</p>
+  </footer>
+
+  <script>
+    function copyMsg(btn) {
+      const box = btn.parentElement;
+      const text = box.innerText.replace('Copiar', '').replace('Copiado!', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

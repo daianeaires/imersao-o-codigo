@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompts de IA — Imersão O Código®</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background: #320F13; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: #B8862E; letter-spacing: 0.25em; font-size: 0.65rem; text-transform: uppercase;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .card { background: rgba(79,28,33,0.45); border: 1px solid rgba(184,134,46,0.22); border-radius: 1rem; }
+    .prompt-box {
+      background: rgba(26,7,9,0.7);
+      border: 1px solid rgba(184,134,46,0.3);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: #EDE2D6;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: rgba(184,134,46,0.2); border: 1px solid rgba(184,134,46,0.4);
+      border-radius: 0.4rem; padding: 0.25rem 0.6rem;
+      font-size: 0.6rem; color: #B8862E; cursor: pointer; letter-spacing: 0.08em;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: rgba(184,134,46,0.35); }
+    .copy-btn.copied { color: #7dc97d; border-color: #7dc97d; background: rgba(125,201,125,0.1); }
+    .session-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(184,134,46,0.12); border: 1px solid rgba(184,134,46,0.35);
+      border-radius: 9999px; padding: 0.35rem 1rem;
+      font-size: 0.65rem; color: #B8862E; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .step-number {
+      width: 2rem; height: 2rem; border-radius: 9999px;
+      border: 1px solid rgba(184,134,46,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #B8862E;
+      flex-shrink: 0;
+    }
+    .tip-box {
+      background: rgba(184,134,46,0.08);
+      border-left: 3px solid #B8862E;
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem; color: #D9C3B0/80;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="py-10 px-6 text-center border-b border-dourado/15" style="background: #1a0709;">
+    <div class="max-w-xl mx-auto">
+      <div class="session-badge mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-dourado"></span>
+        Material exclusivo para alunas
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl text-creme-pale leading-tight mb-3">
+        Prompts de IA<br />
+        <em class="gold-text">Imersão O Código®</em>
+      </h1>
+      <p class="font-sans text-sm text-creme/60 leading-relaxed mt-4">
+        Use estes prompts no <strong class="text-creme">ChatGPT ou Claude</strong> entre as sessões para aprofundar sua transformação e acelerar seus resultados.
+      </p>
+    </div>
+  </header>
+
+  <!-- Como usar -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="card p-6">
+      <h2 class="font-serif text-xl text-creme-pale mb-4">Como usar estes prompts</h2>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start">
+          <div class="step-number">1</div>
+          <p class="font-sans text-sm text-creme/70 leading-relaxed pt-1">Abra o <strong class="text-creme">ChatGPT</strong> (chat.openai.com) ou o <strong class="text-creme">Claude</strong> (claude.ai) — ambos são gratuitos.</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-number">2</div>
+          <p class="font-sans text-sm text-creme/70 leading-relaxed pt-1">Copie o prompt clicando em <strong class="text-creme">Copiar</strong>, cole no chat e substitua o que estiver entre colchetes <strong class="text-creme">[ ]</strong> pelas suas respostas reais.</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-number">3</div>
+          <p class="font-sans text-sm text-creme/70 leading-relaxed pt-1">Não tenha pressa. Dialogue com a IA — peça para ela aprofundar, reformular ou questionar suas respostas.</p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <div class="step-number">4</div>
+          <p class="font-sans text-sm text-creme/70 leading-relaxed pt-1">Guarde os resultados — você vai usar nas próximas sessões e na construção do seu posicionamento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SESSÃO 1 ═══ -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Após a Sessão 1 · 24 de Março</div>
+
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-3xl text-creme-pale mb-2">Decodificando<br /><em class="gold-text">Sua Identidade</em></h2>
+      <p class="font-sans text-xs text-creme/50 mt-2">Use estes prompts entre 24 e 26 de março</p>
+    </div>
+
+    <div class="space-y-6">
+
+      <!-- Prompt 1.1 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 1 — Mapeamento do Arquétipo</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para identificar seu arquétipo de poder com profundidade.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero mapear meu arquétipo de poder — não como estética visual, mas como estrutura de decisão e liderança. Para isso, vou te dar três situações reais da minha vida profissional e quero que você identifique padrões de comportamento, valores centrais e o arquétipo que mais se manifesta em mim.<br /><br />
+          Situação 1: [descreva uma situação em que você liderou ou tomou uma decisão importante]<br />
+          Situação 2: [descreva uma situação em que você se sentiu mais autêntica e poderosa]<br />
+          Situação 3: [descreva uma situação em que você enfrentou um conflito ou desafio e como reagiu]<br /><br />
+          Com base nessas situações, me diga: qual arquétipo se manifesta com mais força? Quais são meus valores centrais? E o que esse arquétipo revela sobre como eu tomo decisões?</span>
+        </div>
+      </div>
+
+      <!-- Prompt 1.2 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 2 — Sombra e Potencial</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para entender o que te bloqueia e o que ainda não foi ativado.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Meu arquétipo principal é [coloque o arquétipo identificado no prompt anterior]. Quero entender dois aspectos:<br /><br />
+          1. A SOMBRA do meu arquétipo — quais são os padrões limitantes, medos ou comportamentos que esse arquétipo tende a desenvolver quando não está integrado?<br />
+          2. O POTENCIAL não ativado — quais são as forças, dons e capacidades desse arquétipo que ainda não estou expressando totalmente?<br /><br />
+          Seja direta e específica. Não quero respostas genéricas — quero entender o que esse arquétipo revela sobre meus bloqueios reais e meu maior potencial de liderança.</span>
+        </div>
+      </div>
+
+      <!-- Prompt 1.3 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 3 — Identidade em Palavras</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para criar sua declaração de identidade.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Com base no meu arquétipo [arquétipo] e nos valores que identificamos, quero criar minha Declaração de Identidade — uma frase poderosa que capture quem eu sou no nível mais essencial, não o que eu faço.<br /><br />
+          Informações sobre mim:<br />
+          - O que eu faço: [sua profissão/serviço]<br />
+          - Para quem: [seu público]<br />
+          - Meu maior valor: [o que você mais valoriza na sua atuação]<br />
+          - Como as pessoas me descrevem: [adjetivos que você recebe com frequência]<br /><br />
+          Crie 3 versões de Declaração de Identidade — curta (até 10 palavras), média (até 25 palavras) e expandida (até 3 frases). Cada uma deve soar como EU, não como marketing.</span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        ✦ <strong>Dica:</strong> Salve os resultados destes prompts — você vai usá-los na Sessão 2 para construir sua presença.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SESSÃO 2 ═══ -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Após a Sessão 2 · 26 de Março</div>
+
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-3xl text-creme-pale mb-2">Estruturando<br /><em class="gold-text">Sua Presença</em></h2>
+      <p class="font-sans text-xs text-creme/50 mt-2">Use estes prompts entre 26 e 31 de março</p>
+    </div>
+
+    <div class="space-y-6">
+
+      <!-- Prompt 2.1 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 4 — Bio com Identidade</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para reescrever sua bio do Instagram com sua identidade real.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero reescrever minha bio do Instagram com base na minha identidade — não em técnicas de copywriting genéricas.<br /><br />
+          Minha identidade: [coloque sua Declaração de Identidade do Prompt 3]<br />
+          Meu arquétipo: [seu arquétipo]<br />
+          O que ofereço: [seu serviço ou produto]<br />
+          Para quem: [seu público ideal]<br />
+          Resultado que gero: [transformação que você entrega]<br />
+          Bio atual: [cole sua bio atual]<br /><br />
+          Crie 3 versões de bio para o Instagram (máximo 150 caracteres cada). Cada versão deve soar autêntica ao meu arquétipo — não genérica. Me diz também qual das três está mais alinhada com minha identidade e por quê.</span>
+        </div>
+      </div>
+
+      <!-- Prompt 2.2 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 5 — Posicionamento de Oferta</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para posicionar seu serviço ou produto com sua voz real.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero criar a apresentação do meu serviço/produto de forma que reflita minha identidade e posicionamento — não um script de vendas padrão.<br /><br />
+          Meu serviço/produto: [descreva o que você vende]<br />
+          Preço: [seu preço]<br />
+          Para quem é: [cliente ideal]<br />
+          Transformação que entrega: [resultado real]<br />
+          Meu arquétipo: [seu arquétipo]<br />
+          Minha maior fortaleza como profissional: [o que você faz diferente de todos]<br /><br />
+          Crie uma apresentação de 3-5 frases que eu possa usar em stories, DMs ou numa conversa informal. Deve soar como eu falo — não como uma copy de anúncio. Depois, crie também uma headline poderosa de até 10 palavras para usar como gancho.</span>
+        </div>
+      </div>
+
+      <!-- Prompt 2.3 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 6 — Conteúdo com Presença</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para criar uma semana de conteúdo alinhada com sua identidade.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero criar conteúdo para o Instagram que expresse minha identidade real — não conteúdo que imita tendência ou que parece de outra pessoa.<br /><br />
+          Meu arquétipo: [seu arquétipo]<br />
+          Meu posicionamento: [sua área de atuação]<br />
+          Meu público: [quem você quer atrair]<br />
+          Minha grande mensagem: [o que você mais quer que as pessoas entendam sobre seu trabalho]<br /><br />
+          Crie 5 ideias de posts para esta semana — uma para cada dia útil. Para cada post, me dá: o tema, o gancho de abertura (primeira frase) e o formato sugerido (carrossel, reels, foto, etc). Cada ideia deve emergir da minha identidade — não de fórmulas genéricas de conteúdo.</span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        ✦ <strong>Dica:</strong> Não aceite a primeira resposta. Peça para a IA refinar: "está muito genérico, reescreva com mais personalidade" ou "quero soar mais [adjetivo do seu arquétipo]".
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SESSÃO 3 ═══ -->
+  <section class="py-10 px-6 max-w-2xl mx-auto">
+    <div class="ornament mb-8">Após a Sessão 3 · 31 de Março</div>
+
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-3xl text-creme-pale mb-2">Ativando<br /><em class="gold-text">Sua Decisão</em></h2>
+      <p class="font-sans text-xs text-creme/50 mt-2">Use estes prompts após a última sessão</p>
+    </div>
+
+    <div class="space-y-6">
+
+      <!-- Prompt 3.1 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 7 — Plano de Autoridade 30 dias</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para criar seu plano de ação pós-imersão.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Acabei de concluir uma imersão de identidade e posicionamento. Tenho clareza sobre meu arquétipo, minha presença e meu posicionamento. Agora preciso de um plano prático para os próximos 30 dias que me ajude a consolidar minha autoridade de mercado.<br /><br />
+          Meu arquétipo: [seu arquétipo]<br />
+          Meu posicionamento: [sua área]<br />
+          Meu serviço principal: [o que você vende]<br />
+          Meta dos próximos 30 dias: [ex: fechar 3 clientes, lançar uma oferta, crescer 500 seguidores qualificados]<br />
+          Minha maior dificuldade atual: [o que te trava hoje]<br /><br />
+          Crie um plano de 30 dias dividido em semanas, com ações específicas de conteúdo, vendas e presença de mercado — tudo alinhado com minha identidade. Não quero um plano genérico: quero um plano que faça sentido para o meu arquétipo e meu momento atual.</span>
+        </div>
+      </div>
+
+      <!-- Prompt 3.2 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 8 — Treino de Objeções</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para treinar sua venda com autenticidade.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero treinar como responder às objeções mais comuns dos meus clientes — mas de forma autêntica, sem scripts robóticos que não combinam com quem eu sou.<br /><br />
+          Meu serviço: [o que você vende]<br />
+          Preço: [valor]<br />
+          Meu arquétipo: [seu arquétipo]<br /><br />
+          Faça o papel de um cliente potencial e me apresente as 5 objeções mais comuns que alguém teria antes de contratar meu serviço. Para cada objeção que eu responder, me dê um feedback: minha resposta foi autêntica e poderosa ou soou defensiva e insegura? E me sugira como posso responder de forma mais alinhada com minha identidade.</span>
+        </div>
+      </div>
+
+      <!-- Prompt 3.3 -->
+      <div class="card p-6">
+        <div class="session-badge mb-4">Prompt 9 — Carta para o Mercado</div>
+        <p class="font-sans text-xs text-creme/50 mb-3 leading-relaxed">Para declarar publicamente quem você é e para quem serve.</p>
+        <div class="prompt-box">
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+          <span>Quero escrever uma "Carta para o Mercado" — um texto poderoso que declare publicamente quem eu sou, quem eu sirvo e o que eu não aceito mais. Esse texto pode virar um post, uma página de apresentação ou o início da minha biografia expandida.<br /><br />
+          Minha identidade: [sua Declaração de Identidade]<br />
+          Meu arquétipo: [seu arquétipo]<br />
+          Para quem sirvo: [cliente ideal]<br />
+          O que eu não aceito mais: [o que você decidiu abandonar após a imersão — um padrão, um tipo de cliente, uma forma de se posicionar]<br />
+          O que eu ofereço ao mercado: [sua promessa real]<br /><br />
+          Escreva a carta em primeira pessoa, com tom que combine com meu arquétipo. Deve ter entre 150-250 palavras e terminar com uma declaração de intenção clara e poderosa.</span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        ✦ <strong>Dica final:</strong> A IA é um espelho — quanto mais você se abre e dá contexto real, mais poderosas serão as respostas. Não tenha medo de ser específica e vulnerável com ela.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 text-center border-t border-dourado/10 mt-10" style="background: #0f0507;">
+    <img src="assets/images/logo.jpeg" alt="O Código Imersão" class="h-12 w-auto rounded mx-auto mb-4 opacity-70" />
+    <p class="font-sans text-xs text-creme/30">© 2026 Jacqueline Fraga · Imersão O Código®</p>
+    <p class="font-sans text-xs text-creme/20 mt-1">Material exclusivo para alunas. Não compartilhe fora do grupo.</p>
+  </footer>
+
+  <script>
+    function copyPrompt(btn) {
+      const box = btn.parentElement;
+      const text = box.innerText.replace('Copiar', '').replace('Copiado!', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copiar';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
