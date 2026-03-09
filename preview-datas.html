@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Opções de Datas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vinho: { deep: '#320F13', dark: '#4F1C21', DEFAULT: '#732231' },
+            creme: { DEFAULT: '#D9C3B0', light: '#EDE2D6', pale: '#F7F1EB' },
+            dourado: '#B8862E',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { background: #1a0709; color: #D9C3B0; font-family: 'Montserrat', sans-serif; }
+    .gold-text {
+      background: linear-gradient(135deg, #c9973d, #B8862E, #e8c06a, #B8862E);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .label {
+      background: rgba(184,134,46,0.15);
+      border: 1px solid rgba(184,134,46,0.4);
+      color: #B8862E;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: #F7F1EB;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,134,46,0.3), transparent);
+      margin: 3rem 0;
+    }
+
+    /* Opção 1 - Cards */
+    .date-card {
+      background: rgba(79,28,33,0.5);
+      border: 1px solid rgba(184,134,46,0.35);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .date-card .day { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #B8862E; line-height: 1; }
+    .date-card .month { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; color: #D9C3B0; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.25rem; }
+    .date-card .time { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; color: rgba(217,195,176,0.6); margin-top: 0.5rem; }
+    .date-card .enc { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; color: #B8862E; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; }
+
+    /* Opção 2 - Countdown */
+    .countdown-box {
+      background: rgba(79,28,33,0.4);
+      border: 1px solid rgba(184,134,46,0.3);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .countdown-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: #B8862E; line-height: 1; }
+    .countdown-label { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; color: rgba(217,195,176,0.6); text-transform: uppercase; letter-spacing: 0.15em; }
+
+    /* Opção 3 - Inline bold */
+    .date-inline { color: #B8862E; font-weight: 700; font-size: 1rem; }
+
+    /* Opção 4 - Bloco exclusivo */
+    .date-block {
+      background: linear-gradient(135deg, rgba(79,28,33,0.6), rgba(50,15,19,0.8));
+      border: 1px solid rgba(184,134,46,0.3);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .date-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #B8862E, transparent);
+    }
+    .date-row { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(184,134,46,0.1); }
+    .date-row:last-child { border-bottom: none; }
+    .date-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #B8862E; width: 3rem; text-align: center; flex-shrink: 0; }
+    .date-info { flex: 1; }
+    .date-info .di-enc { font-size: 0.6rem; color: rgba(184,134,46,0.7); text-transform: uppercase; letter-spacing: 0.15em; }
+    .date-info .di-date { font-size: 1rem; color: #F7F1EB; font-weight: 500; }
+    .date-info .di-time { font-size: 0.7rem; color: rgba(217,195,176,0.6); margin-top: 0.1rem; }
+    .date-badge { background: rgba(184,134,46,0.15); border: 1px solid rgba(184,134,46,0.3); border-radius: 999px; padding: 0.25rem 0.75rem; font-size: 0.6rem; color: #B8862E; text-transform: uppercase; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body class="py-16 px-6">
+
+  <div class="max-w-2xl mx-auto">
+
+    <div class="text-center mb-16">
+      <h1 class="font-serif text-4xl gold-text mb-3">Preview — Opções de Datas</h1>
+      <p class="font-sans text-xs text-creme/50">Escolha a opção que mais gostar</p>
+    </div>
+
+    <!-- OPÇÃO 1 -->
+    <div class="mb-4 text-center"><span class="label">Opção 1 — Cards Individuais</span></div>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+      <div class="date-card">
+        <div class="enc">1° Encontro</div>
+        <div class="day">24</div>
+        <div class="month">Março</div>
+        <div class="time">19h · Online</div>
+      </div>
+      <div class="date-card" style="border-color: rgba(184,134,46,0.6);">
+        <div class="enc">2° Encontro</div>
+        <div class="day">26</div>
+        <div class="month">Março</div>
+        <div class="time">19h · Online</div>
+      </div>
+      <div class="date-card">
+        <div class="enc">3° Encontro</div>
+        <div class="day">31</div>
+        <div class="month">Março</div>
+        <div class="time">19h · Online</div>
+      </div>
+    </div>
+    <p class="text-center font-sans text-xs text-creme/40 mb-2">Três caixinhas douradas, cada uma com o dia e horário em destaque.</p>
+
+    <div class="divider"></div>
+
+    <!-- OPÇÃO 2 -->
+    <div class="mb-4 text-center"><span class="label">Opção 2 — Contagem Regressiva</span></div>
+    <div class="countdown-box mb-4">
+      <p class="font-sans text-xs text-creme/50 uppercase tracking-widest mb-3">1° Encontro começa em</p>
+      <div class="flex justify-center gap-6">
+        <div>
+          <div class="countdown-num">14</div>
+          <div class="countdown-label">Dias</div>
+        </div>
+        <div class="countdown-num" style="color: rgba(184,134,46,0.4); font-size: 2rem; align-self: flex-start; margin-top: 0.5rem;">:</div>
+        <div>
+          <div class="countdown-num">08</div>
+          <div class="countdown-label">Horas</div>
+        </div>
+        <div class="countdown-num" style="color: rgba(184,134,46,0.4); font-size: 2rem; align-self: flex-start; margin-top: 0.5rem;">:</div>
+        <div>
+          <div class="countdown-num">43</div>
+          <div class="countdown-label">Min</div>
+        </div>
+      </div>
+      <p class="font-sans text-xs text-creme/40 mt-3">24 de março · 19h · Online</p>
+    </div>
+    <p class="text-center font-sans text-xs text-creme/40 mb-2">Contador ao vivo que cria urgência e chama atenção.</p>
+
+    <div class="divider"></div>
+
+    <!-- OPÇÃO 3 -->
+    <div class="mb-4 text-center"><span class="label">Opção 3 — Destaque no Texto</span></div>
+    <div class="text-center mb-4 bg-vinho-dark/30 rounded-xl p-6">
+      <p class="font-sans text-sm text-creme/80 leading-relaxed">
+        ✦ 3 encontros ao vivo ·
+        <span class="date-inline">24 · 26 · 31 de março</span>
+        · às <span class="date-inline">19h</span> · Garantia de 7 dias
+      </p>
+    </div>
+    <p class="text-center font-sans text-xs text-creme/40 mb-2">As datas em dourado e negrito dentro da linha de texto.</p>
+
+    <div class="divider"></div>
+
+    <!-- OPÇÃO 4 -->
+    <div class="mb-4 text-center"><span class="label">Opção 4 — Bloco Exclusivo</span></div>
+    <div class="date-block mb-4">
+      <p class="font-sans text-xs text-creme/50 uppercase tracking-widest text-center mb-4">Agenda dos Encontros</p>
+      <div class="date-row">
+        <div class="date-num">24</div>
+        <div class="date-info">
+          <div class="di-enc">1° Encontro</div>
+          <div class="di-date">24 de Março de 2026</div>
+          <div class="di-time">19h · Ao vivo · Online</div>
+        </div>
+        <div class="date-badge">Em breve</div>
+      </div>
+      <div class="date-row">
+        <div class="date-num">26</div>
+        <div class="date-info">
+          <div class="di-enc">2° Encontro</div>
+          <div class="di-date">26 de Março de 2026</div>
+          <div class="di-time">19h · Ao vivo · Online</div>
+        </div>
+        <div class="date-badge">Em breve</div>
+      </div>
+      <div class="date-row">
+        <div class="date-num">31</div>
+        <div class="date-info">
+          <div class="di-enc">3° Encontro</div>
+          <div class="di-date">31 de Março de 2026</div>
+          <div class="di-time">19h · Ao vivo · Online</div>
+        </div>
+        <div class="date-badge">Em breve</div>
+      </div>
+    </div>
+    <p class="text-center font-sans text-xs text-creme/40 mb-2">Bloco dedicado só para as datas, muito claro e organizado.</p>
+
+    <div class="divider"></div>
+
+    <p class="text-center font-sans text-xs text-creme/30">Escolha uma opção e me avisa — implemento na página principal!</p>
+
+  </div>
+
+</body>
+</html>
